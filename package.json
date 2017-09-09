@@ -1,0 +1,31 @@
+{
+  "name": "@sifive/coreplex-templates",
+  "version": "0.0.1",
+  "description": "An xPack with templates to generate SiFive Coreplex projects",
+  "main": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/micro-os-plus/sifive-coreplex-templates.git"
+  },
+  "keywords": [
+    "c++",
+    "templates",
+    "coreplex"
+  ],
+  "author": {
+    "name": "Liviu Ionescu",
+    "email": "ilg@livius.net",
+    "url": "http://liviusdotnet.wordpress.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/micro-os-plus/sifive-coreplex-templates/issues"
+  },
+  "config": {},
+  "dependencies": {},
+  "xpack": {}, 
+  "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates"
+}
