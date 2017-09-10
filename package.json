@@ -2,7 +2,10 @@
   "name": "@sifive/coreplex-templates",
   "version": "0.0.1",
   "description": "An xPack with templates to generate SiFive Coreplex projects",
-  "main": "",
+  "main": "./index.js",
+  "bin": {
+    "xgen-sifive-coreplex-project": "./bin/xgen-sifive-coreplex-project.js"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
