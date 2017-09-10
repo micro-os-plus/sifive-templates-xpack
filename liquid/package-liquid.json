@@ -19,7 +19,9 @@
     "c",
     "c++",
     "micro-os-plus",
-    "risc-v"
+    "risc-v",
+    "sifive",
+    "coreplex"
   ],
   "author": {
     "name": "",
