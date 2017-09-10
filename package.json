@@ -29,8 +29,8 @@
   },
   "config": {},
   "dependencies": {
-    "@sifive/coreplex-arty-boards": "^0.0.2",
-    "@sifive/hifive1-board": "^0.0.2"
+    "@sifive/coreplex-arty-boards": "^0.0.3",
+    "@sifive/hifive1-board": "^0.0.3"
   },
   "xpack": {},
   "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates"
