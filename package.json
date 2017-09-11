@@ -3,11 +3,17 @@
   "version": "0.0.3",
   "description": "An xPack with templates to generate SiFive Coreplex projects",
   "main": "./index.js",
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./test"
+  },
   "bin": {
     "xgen-sifive-coreplex-project": "./bin/xgen-sifive-coreplex-project.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -23,15 +29,26 @@
     "email": "ilg@livius.net",
     "url": "http://liviusdotnet.wordpress.com"
   },
+  "contributors": [],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/micro-os-plus/sifive-coreplex-templates/issues"
   },
-  "config": {},
+  "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates",
   "dependencies": {
     "@sifive/coreplex-arty-boards": "^0.0.3",
-    "@sifive/hifive1-board": "^0.0.3"
+    "@sifive/hifive1-board": "^0.0.3",
+    "liquidjs": "^1.9.5",
+    "@ilg/es6-promisifier": "^0.1.4",
+    "@ilg/cli-start-options": "^0.2.2",
+    "shelljs": "^0.7.8"
   },
-  "xpack": {},
-  "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates"
+  "devDependencies": {
+    "standard": "^10.0.3"
+  },
+  "peerDependencies": {},
+  "bundledDependencies": [],
+  "optionalDependencies": {},
+  "config": {},
+  "xpack": {}
 }
