@@ -29,10 +29,10 @@
 #include <micro-os-plus/diag/trace.h>
 #include <sysclock.h>
 
-{% if language == 'c' %}
+{% if language == 'c' -%}
 #include <stdbool.h>
 
-{% endif %}
+{% endif -%}
 // ----------------------------------------------------------------------------
 
 /**
@@ -60,15 +60,15 @@ void
 riscv_interrupt_local_handle_machine_timer (void)
 {
   // Disable M timer interrupt.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::clear_mie (MIP_MTIP);
 
   uint64_t tim = riscv::device::mtime ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_clear_mie (MIP_MTIP);
 
   uint64_t tim = riscv_device_read_mtime ();
-{% endif %}
+{% endif -%}
   uint64_t cmp;
 
   // The simple method to compute mtimecmp by adding a value to the
@@ -88,100 +88,96 @@ riscv_interrupt_local_handle_machine_timer (void)
   // system clock, but this should not be a problem.
   do
     {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       sysclock.internal_increment_count ();
       cmp = sysclock.steady_now () * riscv::board::rtc_frequency_hz ()
           / sysclock.frequency_hz;
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       os_sysclock_internal_increment_count ();
        cmp = os_sysclock_steady_now () * riscv_board_get_rtc_frequency_hz ()
            / os_sysclock_get_frequency_hz ();
-{% endif %}
+{% endif -%}
     }
   while (cmp <= tim);
 
   // The interrupt remains posted until it is cleared by writing
   // the mtimecmp register.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::device::mtimecmp (cmp);
 
   // os::trace::putchar('.');
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_device_write_mtimecmp (cmp);
 
   // trace_putchar('.');
-{% endif %}
+{% endif -%}
 
   // Enable M timer interrupt.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::set_mie (MIP_MTIP);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_set_mie (MIP_MTIP);
-{% endif %}
+{% endif -%}
 }
 
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
 extern bool button_pushed;
 extern bool button_released;
 
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
 // The button is connected to GPIO18, active low.
 void
 riscv_interrupt_global_handle_gpio18 (void)
-{% elsif boardName == 'e31arty' or  boardName == 'e51arty' %}
+{% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
 // The button is connected to GPIO4, active high.
 void
 riscv_interrupt_global_handle_gpio4 (void)
-{% endif %}
+{% endif -%}
 {
   if (riscv_device_gpio_ptr->rise_ip & (1 << BUTTON_0_OFFSET))
     {
-
-{% if boardName == 'hifive1' %}
-{% if language == 'cpp' %}
+{% if boardName == 'hifive1' -%}
+{% if language == 'cpp' -%}
       os::trace::putchar ('u');
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       trace_putchar ('u');
-{% endif %}
+{% endif -%}
       button_released = true;
-{% elsif boardName == 'e31arty' or  boardName == 'e51arty' %}
-{% if language == 'cpp' %}
+{% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
+{% if language == 'cpp' -%}
       os::trace::putchar ('d');
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       trace_putchar ('d');
-{% endif %}
+{% endif -%}
       button_pushed = true;
-{% endif %}
+{% endif -%}
 
       // Clear rising interrupt.
       riscv_device_gpio_ptr->rise_ip |= (1 << BUTTON_0_OFFSET);
-
     }
 
   if (riscv_device_gpio_ptr->fall_ip & (1 << BUTTON_0_OFFSET))
     {
-
-{% if boardName == 'hifive1' %}
-{% if language == 'cpp' %}
+{% if boardName == 'hifive1' -%}
+{% if language == 'cpp' -%}
       os::trace::putchar ('d');
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       trace_putchar ('d');
-{% endif %}
+{% endif -%}
       button_pushed = true;
-{% elsif boardName == 'e31arty' or  boardName == 'e51arty' %}
-{% if language == 'cpp' %}
+{% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
+{% if language == 'cpp' -%}
       os::trace::putchar ('u');
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       trace_putchar ('u');
-{% endif %}
+{% endif -%}
       button_released = true;
-{% endif %}
+{% endif -%}
 
       // Clear falling interrupt.
       riscv_device_gpio_ptr->fall_ip |= (1 << BUTTON_0_OFFSET);
-
     }
 }
 
-{% endif %}
+{% endif -%}
 // ----------------------------------------------------------------------------

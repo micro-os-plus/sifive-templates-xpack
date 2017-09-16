@@ -36,28 +36,28 @@ void
 os_startup_initialize_hardware_early (void)
 {
   // Disable all interrupts.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::clear_mstatus (MSTATUS_MIE);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_clear_mstatus (MSTATUS_MIE);
-{% endif %}
+{% endif -%}
   // Disable all individual interrupts.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::mie (0);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_write_mie (0);
-{% endif %}
+{% endif -%}
 
   // Set the trap assembly handler.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::mtvec ((riscv::arch::register_t) riscv_trap_entry);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_write_mtvec ((riscv_arch_register_t) riscv_trap_entry);
-{% endif %}
+{% endif -%}
 
   // TODO: add support for the PRCI peripheral and use it.
 
-{% if deviceName == 'fe310' %}
+{% if deviceName == 'fe310' -%}
   // TODO: add to C/C++ API
   // Make sure the HFROSC is on before the next line:
   riscv_device_prci_ptr->hfrosccfg |= ROSC_EN(1);
@@ -67,14 +67,14 @@ os_startup_initialize_hardware_early (void)
   // Turn off HFROSC to save power
   riscv_device_prci_ptr->hfrosccfg &= ~((uint32_t)ROSC_EN(1));
 
-{% endif %}
-{% if boardName == 'e31arty' or  boardName == 'e51arty' %}
+{% endif -%}
+{% if boardName == 'e31arty' or  boardName == 'e51arty' -%}
   // For the Arty board, be sure LED1 is off, since it is very bright.
   riscv_device_pwm0_ptr->pwmcmp1 = 0xFF;
   riscv_device_pwm0_ptr->pwmcmp2 = 0xFF;
   riscv_device_pwm0_ptr->pwmcmp3 = 0xFF;
 
-{% endif %}
+{% endif -%}
   // TODO: check Arduino main.cpp for more/better initialisations.
 }
 
@@ -86,44 +86,44 @@ void
 os_startup_initialize_hardware (void)
 {
   // Measure the CPU frequency in cycles, with the RTC as reference.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::core::update_running_frequency ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_core_update_running_frequency ();
-{% endif %}
+{% endif -%}
 
-{% if content == 'blinky' %}
-{% if language == 'cpp' %}
+{% if content == 'blinky' -%}
+{% if language == 'cpp' -%}
   riscv::plic::clear_priorities ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_plic_clear_priorities ();
-{% endif %}
+{% endif -%}
   // Hart specific initializations.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::plic::initialize ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_plic_initialize ();
-{% endif %}
+{% endif -%}
 
-{% endif %}
+{% endif -%}
   // Disable M timer interrupt.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::clear_mie (MIP_MTIP);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_clear_mie (MIP_MTIP);
-{% endif %}
+{% endif -%}
 
   // Clear both mtime and mtimecmp to start afresh.
   // Should trigger an interrupt as soon as enabled.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::device::mtime (0);
   riscv::device::mtimecmp (0);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_device_write_mtime (0);
   riscv_device_write_mtimecmp (0);
-{% endif %}
+{% endif -%}
 
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
   // -------------------------------------------------------------------
   // Configure Button 0 as a global GPIO irq.
 
@@ -142,43 +142,43 @@ os_startup_initialize_hardware (void)
   riscv_device_gpio_ptr->rise_ie |= (1u << BUTTON_0_OFFSET);
 
   // Enable the BUTTON interrupt in PLIC.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::plic::enable_interrupt (INT_DEVICE_BUTTON_0);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_plic_enable_interrupt (INT_DEVICE_BUTTON_0);
-{% endif %}
+{% endif -%}
 
   // Configure the BUTTON priority in PLIC. 2 out of 7.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::plic::priority (INT_DEVICE_BUTTON_0, 2);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_plic_write_priority (INT_DEVICE_BUTTON_0, 2);
-{% endif %}
+{% endif -%}
 
   // Enable Global (PLIC) interrupt.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::core::enable_machine_external_interrupts ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_core_enable_machine_external_interrupts ();
-{% endif %}
+{% endif -%}
 
-{% endif %}
+{% endif -%}
   // -------------------------------------------------------------------
   // When everything else is ready...
 
   // Enable M timer interrupt.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::set_mie (MIP_MTIP);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_set_mie (MIP_MTIP);
-{% endif %}
+{% endif -%}
 
   // Enable interrupts.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   riscv::csr::set_mstatus (MSTATUS_MIE);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   riscv_csr_set_mstatus (MSTATUS_MIE);
-{% endif %}
+{% endif -%}
 }
 
 #pragma GCC diagnostic pop

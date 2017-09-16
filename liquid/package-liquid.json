@@ -39,10 +39,10 @@
   "config": {},
   "dependencies": {
     "@micro-os-plus/diag-trace": "^1.0.1"
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
     ,"@sifive/hifive1-board": "^0.0.2"
-{% elsif boardName == 'e31arty' or boardName == 'e51arty' %}
+{% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
     ,"@sifive/coreplex-arty-boards": "^0.0.2"
-{% endif %}
+{% endif -%}
   }
 }

@@ -26,40 +26,40 @@
  */
 
 #include <micro-os-plus/board.h>
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 #include <micro-os-plus/diag/trace.h>
-{% endif %}
+{% endif -%}
 
 #include <sysclock.h>
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
 #include <led.h>
-{% endif %}
+{% endif -%}
 
 #include <stdint.h>
 #include <stdio.h>
-{% if language == 'c' %}
+{% if language == 'c' -%}
 #include <stdbool.h>
-{% endif %}
+{% endif -%}
 
 // ----------------------------------------------------------------------------
 //
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
 // This program blinks all LEDs on the SiFive {{ boardDescription }} board,
 // at about 1 Hz. Pushing the button interrupts the automatic sequence,
 // and each push will turn off and on the next LED. No special debouncing
 // is implemented, so the results may be jumpy and erratic.
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
 // For the button to work, an external connection from WAKE to DIG2
 // is required.
-{% endif %}
-{% elsif content == 'empty' %}
+{% endif -%}
+{% elsif content == 'empty' -%}
 // This program counts seconds on the SiFive {{ boardDescription }} board.
-{% endif %}
+{% endif -%}
 //
 // ----------------------------------------------------------------------------
 
-{% if content == 'blinky' %}
-{% if language == 'cpp' %}
+{% if content == 'blinky' -%}
+{% if language == 'cpp' -%}
 // Definitions visible only within this translation unit.
 namespace
 {
@@ -70,12 +70,12 @@ namespace
   constexpr clock::duration_t BLINK_OFF_TICKS = sysclock.frequency_hz
       - BLINK_ON_TICKS;
 }
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
 // ----- Timing definitions ---------------------------------------------------
 // Keep the LED on for 3/4 of a second.
 #define BLINK_ON_TICKS (OS_INTEGER_SYSCLOCK_FREQUENCY_HZ * 3 / 4)
 #define BLINK_OFF_TICKS (OS_INTEGER_SYSCLOCK_FREQUENCY_HZ - BLINK_ON_TICKS)
-{% endif %}
+{% endif -%}
 
 // ----- LED definitions ------------------------------------------------------
 
@@ -84,21 +84,21 @@ namespace
 #define BLINK_ACTIVE_HIGH         (false)
 
 // Instantiate a static array of led objects.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
 led blink_leds[] =
   {
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
     { BLINK_PORT_NUMBER, RED_LED_OFFSET, BLINK_ACTIVE_LOW },
     { BLINK_PORT_NUMBER, GREEN_LED_OFFSET, BLINK_ACTIVE_LOW },
     { BLINK_PORT_NUMBER, BLUE_LED_OFFSET, BLINK_ACTIVE_LOW },
-{% else %}
+{% else -%}
     { BLINK_PORT_NUMBER, RED_LED_OFFSET, BLINK_ACTIVE_HIGH },
     { BLINK_PORT_NUMBER, GREEN_LED_OFFSET, BLINK_ACTIVE_HIGH },
     { BLINK_PORT_NUMBER, BLUE_LED_OFFSET, BLINK_ACTIVE_HIGH },
-{% endif %}
+{% endif -%}
   /**/
   };
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
 led_t blink_leds[3];
 
 #pragma GCC diagnostic push
@@ -111,32 +111,32 @@ void
 __attribute__((constructor))
 led_array_construct (void)
 {
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
   led_construct (&blink_leds[0], BLINK_PORT_NUMBER, RED_LED_OFFSET,
                  BLINK_ACTIVE_LOW);
   led_construct (&blink_leds[1], BLINK_PORT_NUMBER, GREEN_LED_OFFSET,
                  BLINK_ACTIVE_LOW);
   led_construct (&blink_leds[2], BLINK_PORT_NUMBER, BLUE_LED_OFFSET,
                  BLINK_ACTIVE_LOW);
-{% else %}
+{% else -%}
   led_construct (&blink_leds[0], BLINK_PORT_NUMBER, RED_LED_OFFSET,
                  BLINK_ACTIVE_HIGH);
   led_construct (&blink_leds[1], BLINK_PORT_NUMBER, GREEN_LED_OFFSET,
                  BLINK_ACTIVE_HIGH);
   led_construct (&blink_leds[2], BLINK_PORT_NUMBER, BLUE_LED_OFFSET,
                  BLINK_ACTIVE_HIGH);
-{% endif %}
+{% endif -%}
 }
 
 #pragma GCC diagnostic pop
-{% endif %}
+{% endif -%}
 
 // ----------------------------------------------------------------------------
 
 bool button_pushed = false;
 bool button_released = false;
 
-{% endif %}
+{% endif -%}
 // ----------------------------------------------------------------------------
 
 #pragma GCC diagnostic push
@@ -146,105 +146,105 @@ bool button_released = false;
 int
 main (int argc, char* argv[])
 {
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
   // Send a greeting to the trace device (skipped on Release).
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   os::trace::puts ("Hello RISC-V World!");
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   trace_puts ("Hello RISC-V World!");
-{% endif %}
+{% endif -%}
 
-{% endif %}
-{% if syscalls != 'none' %}
+{% endif -%}
+{% if syscalls != 'none' -%}
   // Send a message to the standard output.
   puts ("Standard output message.");
 
   // Send a message to the standard error.
   fprintf (stderr, "Standard error message.\n");
 
-{% endif %}
+{% endif -%}
   // At this stage the system clock should have already been configured
   // at high speed.
-{% if trace != 'NONE' %}
-{% if language == 'cpp' %}
+{% if trace != 'none' -%}
+{% if language == 'cpp' -%}
   os::trace::printf ("System clock: %u Hz\n",
                      riscv::core::running_frequency_hz ());
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   trace_printf ("System clock: %u Hz\n",
                 riscv_core_get_running_frequency_hz ());
-{% endif %}
-{% endif %}
+{% endif -%}
+{% endif -%}
 
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
   // Power up all LEDs.
   for (size_t i = 0; i < (sizeof(blink_leds) / sizeof(blink_leds[0])); ++i)
     {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[i].power_up ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       led_power_up (&blink_leds[i]);
-{% endif %}
+{% endif -%}
     }
 
-{% endif %}
-{% if trace != 'NONE' %}
+{% endif -%}
+{% if trace != 'none' -%}
   uint32_t seconds = 0;
 
-{% endif %}
-{% if content == 'blinky' %}
+{% endif -%}
+{% if content == 'blinky' -%}
   // Turn on all LEDs.
   for (size_t i = 0; i < (sizeof(blink_leds) / sizeof(blink_leds[0])); ++i)
     {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[i].turn_on ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       led_turn_on (&blink_leds[i]);
-{% endif %}
+{% endif -%}
     }
 
   // First interval is longer (one full second).
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   sysclock.sleep_for (sysclock.frequency_hz);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
   os_sysclock_sleep_for (os_sysclock_get_frequency_hz ());
-{% endif %}
+{% endif -%}
 
   // Turn off all LEDs.
   for (size_t i = 0; i < (sizeof(blink_leds) / sizeof(blink_leds[0])); ++i)
     {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[i].turn_off ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       led_turn_off (&blink_leds[i]);
-{% endif %}
+{% endif -%}
     }
 
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
   sysclock.sleep_for (BLINK_OFF_TICKS);
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
   ++seconds;
   os::trace::printf ("Second %u\n", seconds);
-{% endif %}
-{% elsif language == 'c' %}
+{% endif -%}
+{% elsif language == 'c' -%}
   os_sysclock_sleep_for (BLINK_OFF_TICKS);
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
   ++seconds;
   trace_printf ("Second %u\n", seconds);
-{% endif %}
-{% endif %}
+{% endif -%}
+{% endif -%}
 
-{% endif %}
-{% if content == 'blinky' %}
+{% endif -%}
+{% if content == 'blinky' -%}
   size_t count = 0;
-{% endif %}
+{% endif -%}
   // Loop forever, one second at a time.
   while (true)
     {
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
       // Blink individual LEDs.
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[count].turn_on ();
       sysclock.sleep_for (BLINK_ON_TICKS);
 
@@ -259,12 +259,12 @@ main (int argc, char* argv[])
         {
           break; // Quit loop with LED turned off.
         }
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
       ++seconds;
       os::trace::printf ("Second %u\n", seconds);
-{% endif %}
-{% elsif language == 'c' %}
+{% endif -%}
+{% elsif language == 'c' -%}
       led_turn_on (&blink_leds[count]);
       os_sysclock_sleep_for (BLINK_ON_TICKS);
 
@@ -279,37 +279,37 @@ main (int argc, char* argv[])
         {
           break; // Quit loop with LED turned off.
         }
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
       ++seconds;
       trace_printf ("Second %u\n", seconds);
-{% endif %}
-{% endif %}
+{% endif -%}
+{% endif -%}
 
       ++count;
       if (count >= (sizeof(blink_leds) / sizeof(blink_leds[0])))
         {
           count = 0;
         }
-{% elsif content == 'empty' %}
-{% if language == 'cpp' %}
+{% elsif content == 'empty' -%}
+{% if language == 'cpp' -%}
       sysclock.sleep_for (sysclock.frequency_hz);
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
       ++seconds;
       os::trace::printf ("Second %u\n", seconds);
-{% endif %}
-{% elsif language == 'c' %}
+{% endif -%}
+{% elsif language == 'c' -%}
       os_sysclock_sleep_for (os_sysclock_get_frequency_hz ());
-{% if trace != 'NONE' %}
+{% if trace != 'none' -%}
 
       ++seconds;
       trace_printf ("Second %u\n", seconds);
-{% endif %}
-{% endif %}
-{% endif %}
+{% endif -%}
+{% endif -%}
+{% endif -%}
     }
-{% if content == 'blinky' %}
+{% if content == 'blinky' -%}
 
   while (true)
     {
@@ -323,40 +323,40 @@ main (int argc, char* argv[])
       // Wait for button to be released.
       while (!button_released)
         {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
           riscv::arch::wfi ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
           riscv_arch_wfi ();
-{% endif %}
+{% endif -%}
         }
 
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[count].turn_on ();
       sysclock.sleep_for (BLINK_ON_TICKS);
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       led_turn_on (&blink_leds[count]);
       os_sysclock_sleep_for (BLINK_ON_TICKS);
-{% endif %}
+{% endif -%}
       button_released = false;
 
       // Wait for button to be pushed.
       while (!button_pushed)
         {
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
           riscv::arch::wfi ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
           riscv_arch_wfi ();
-{% endif %}
+{% endif -%}
         }
 
-{% if language == 'cpp' %}
+{% if language == 'cpp' -%}
       blink_leds[count].turn_off ();
-{% elsif language == 'c' %}
+{% elsif language == 'c' -%}
       led_turn_off (&blink_leds[count]);
-{% endif %}
+{% endif -%}
       button_pushed = false;
     }
-{% endif %}
+{% endif -%}
 }
 
 #pragma GCC diagnostic pop

@@ -1,13 +1,13 @@
-{% if boardName == 'hifive1' %}
-{% assign gdbServerOther = "-f &quot;board/sifive-freedom-e300-hifive1.cfg&quot;" %}
-{% assign riscvXlen = "32" %}
-{% elsif boardName == 'e31arty' %}
-{% assign gdbServerOther = "-c &quot;adapter_khz 5000&quot; -f &quot;interface/ftdi/olimex-arm-usb-tiny-h.cfg&quot; -f &quot;board/sifive-coreplexip-e31-arty.cfg&quot;" %}
-{% assign riscvXlen = "32" %}
-{% elsif boardName == 'e51arty' %}
-{% assign gdbServerOther = "-c &quot;adapter_khz 5000&quot; -f &quot;interface/ftdi/olimex-arm-usb-tiny-h.cfg&quot; -f &quot;board/sifive-coreplexip-e51-arty.cfg&quot;" %}
-{% assign riscvXlen = "64" %}
-{% endif %}
+{% if boardName == 'hifive1' -%}
+{% assign gdbServerOther = "-f &quot;board/sifive-freedom-e300-hifive1.cfg&quot;" -%}
+{% assign riscvXlen = "32" -%}
+{% elsif boardName == 'e31arty' -%}
+{% assign gdbServerOther = "-c &quot;adapter_khz 5000&quot; -f &quot;interface/ftdi/olimex-arm-usb-tiny-h.cfg&quot; -f &quot;board/sifive-coreplexip-e31-arty.cfg&quot;" -%}
+{% assign riscvXlen = "32" -%}
+{% elsif boardName == 'e51arty' -%}
+{% assign gdbServerOther = "-c &quot;adapter_khz 5000&quot; -f &quot;interface/ftdi/olimex-arm-usb-tiny-h.cfg&quot; -f &quot;board/sifive-coreplexip-e51-arty.cfg&quot;" -%}
+{% assign riscvXlen = "64" -%}
+{% endif -%}
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="ilg.gnumcueclipse.debug.gdbjtag.openocd.launchConfigurationType">
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.doContinue" value="true"/>

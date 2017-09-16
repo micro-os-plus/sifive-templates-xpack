@@ -23,21 +23,21 @@ Most of the xPacks are part of the [µOS++](http://micro-os-plus.github.io) proj
 
 - `micro-os-plus-riscv-arch` RISC-V architecture files
 - `sifive-coreplex-devices` SiFive Coreplex IP devices files
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
 - `sifive-hifive1-board` SiFive Freedom E310 HiFive1 files
-{% elsif boardName == 'e31arty' or boardName == 'e51arty' %}
+{% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
 - `coreplex-arty-boards` SiFive Coreplex IP Arty FPGA files
-{% endif %}
+{% endif -%}
 
 ## Debug
 
 An OpenOCD debug launch file is automatically generated.
 
-{% if boardName == 'hifive1' %}
+{% if boardName == 'hifive1' -%}
 The HiFive1 board has an on board JTAG programmer. The OpenOCD configuration 
 is available as a single file `-f "board/sifive-freedom-e300-hifive1.cfg"`.
 
-{% elsif boardName == 'e31arty' or boardName == 'e51arty' %}
+{% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
 The Arty board has a JTAG hardware connection, and uses an external JTAG probe.
 The debug session is configured to use the JTAG probe 
 Olimex ARM-USB-TINY-H. For other probes, edit the launch configuration and
@@ -47,7 +47,7 @@ Olimex ARM-USB-OCD, use `-f "interface/ftdi/olimex-arm-usb-ocd.cfg"`.
 To see the complete list of probes supported, go to the
 OpenOCD binaries, the `scripts/interface` OpenOCD folder.
 
-{% endif %}
+{% endif -%}
 The referred files are available in the GNU MCU Eclipse OpenOCD distribution. 
 If you use other distributions, you can get the files from [GitHub](https://github.com/gnu-mcu-eclipse/openocd/tree/gnu-mcu-eclipse-dev/tcl/board); download the `sifive-*.cfg` files and 
 copy them in the `scripts/interface` OpenOCD folder.
