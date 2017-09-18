@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "fix": "standard --fix",
-    "link": "npm link @micro-os-plus/c-libs; npm link @micro-os-plus/cpp-libs; npm link @micro-os-plus/diag-trace; npm link @micro-os-plus/riscv-arch; npm link @micro-os-plus/startup; npm link @sifive/coreplex-arty-boards; npm link @sifive/coreplex-devices; npm link @ilg/cli-start-options; npm link @ilg/es6-promisifier"
+    "link": "npm link @micro-os-plus/c-libs; npm link @micro-os-plus/cpp-libs; npm link @micro-os-plus/diag-trace; npm link @micro-os-plus/riscv-arch; npm link @micro-os-plus/startup; npm link @sifive/coreplex-arty-boards; npm link @sifive/hifive1-board; npm link @sifive/coreplex-devices; npm link @ilg/cli-start-options; npm link @ilg/es6-promisifier"
   },
   "repository": {
     "type": "git",
@@ -37,11 +37,11 @@
   },
   "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates",
   "dependencies": {
-    "@sifive/coreplex-arty-boards": "~0.0.3",
-    "@sifive/hifive1-board": "~0.0.3",
-    "liquidjs": "~1.9.5",
-    "@ilg/es6-promisifier": "~0.1.4",
-    "@ilg/cli-start-options": "~0.2.2",
+    "@sifive/coreplex-arty-boards": "~0.0.4",
+    "@sifive/hifive1-board": "~0.0.4",
+    "@ilg/es6-promisifier": "~0.1.9",
+    "@ilg/cli-start-options": "~0.3.1",
+    "liquidjs": "~1.9.6",
     "shelljs": "~0.7.8",
     "readline-sync": "~1.4.7"
   },
