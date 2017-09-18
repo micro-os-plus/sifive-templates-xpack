@@ -1382,6 +1382,11 @@
         "util-deprecate": "1.0.2"
       }
     },
+    "readline-sync": {
+      "version": "1.4.7",
+      "resolved": "https://registry.npmjs.org/readline-sync/-/readline-sync-1.4.7.tgz",
+      "integrity": "sha1-ABv91MBhEMPAhMY798alYCIhPzA="
+    },
     "readline2": {
       "version": "1.0.1",
       "resolved": "https://registry.npmjs.org/readline2/-/readline2-1.0.1.tgz",
