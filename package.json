@@ -9,7 +9,7 @@
     "test": "./test"
   },
   "bin": {
-    "xgen-sifive-coreplex-project": "./bin/xgen-sifive-coreplex-project.js"
+    "xpm-init-sifive-coreplex-project": "./bin/xpm-init-sifive-coreplex-project.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
