@@ -36,7 +36,7 @@ There are two modes, interactive and scriptable.
 
 Starting the tool without any command line options will select the interactive mode, where the user can manually enter each choice.
 
-```
+```bash
 $ mkdir -p /tmp/hifive1-blinky
 $ cd /tmp/hifive1-blinky
 $ xpm-init-sifive-coreplex-project 
