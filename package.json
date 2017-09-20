@@ -1,6 +1,6 @@
 {
   "name": "@sifive/coreplex-templates",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "An xPack with templates to generate SiFive Coreplex projects",
   "main": "./index.js",
   "directories": {
