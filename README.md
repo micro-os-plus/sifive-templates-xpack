@@ -8,10 +8,12 @@ This section is intended for developers who plan to use this pacakge to create p
 
 ### Easy install
 
-To be able to use the command line tool, this package can be installed globally from the `npm` registry:
+To be able to use the command line tool, this package can be installed globally from the `npm` registry.
+
+On GNU/Linux and macOS this looks like (on Windows `sudo` is not necessary):
 
 ```bash
-$ npm install @sifive/coreplex-templates --global
+$ sudo npm install @sifive/coreplex-templates --global
 ```
 
 This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-coreplex-templates):
