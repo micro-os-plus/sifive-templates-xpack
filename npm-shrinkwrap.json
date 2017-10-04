@@ -5,20 +5,13 @@
   "requires": true,
   "dependencies": {
     "@ilg/cli-start-options": {
-      "version": "0.3.1",
-      "resolved": "https://registry.npmjs.org/@ilg/cli-start-options/-/cli-start-options-0.3.1.tgz",
-      "integrity": "sha512-XsyX1g10y/+u0017eWCYJamuhGC5xjWR8Gcb4j4cOp7Yr9mE8/bMitORhETuQIyxa5DNidiHcJiw3b94kdnDhQ==",
+      "version": "0.4.0",
+      "resolved": "https://registry.npmjs.org/@ilg/cli-start-options/-/cli-start-options-0.4.0.tgz",
+      "integrity": "sha512-7nIv55CGiYBaDTIe1sWB9V6Ur95JHhF1af6gS/o7s0sRENtqtDmTmOX0mP0MU7BnRSs9qywlHtWbpf02uBQWSA==",
       "requires": {
         "@ilg/es6-promisifier": "0.1.9",
         "mkdirp": "0.5.1",
         "wscript-avoider": "3.0.2"
-      },
-      "dependencies": {
-        "wscript-avoider": {
-          "version": "3.0.2",
-          "resolved": "https://registry.npmjs.org/wscript-avoider/-/wscript-avoider-3.0.2.tgz",
-          "integrity": "sha512-8KPVPcwvGL/PtZPLABvDPqqKdFVT6nMaUzeFWpxbUyFsQzIItceUypZRasBnR8jeOY4aKibsVNNW+frC/00tUQ=="
-        }
       }
     },
     "@ilg/es6-promisifier": {
@@ -1697,6 +1690,11 @@
       "requires": {
         "mkdirp": "0.5.1"
       }
+    },
+    "wscript-avoider": {
+      "version": "3.0.2",
+      "resolved": "https://registry.npmjs.org/wscript-avoider/-/wscript-avoider-3.0.2.tgz",
+      "integrity": "sha512-8KPVPcwvGL/PtZPLABvDPqqKdFVT6nMaUzeFWpxbUyFsQzIItceUypZRasBnR8jeOY4aKibsVNNW+frC/00tUQ=="
     },
     "xtend": {
       "version": "4.0.1",
