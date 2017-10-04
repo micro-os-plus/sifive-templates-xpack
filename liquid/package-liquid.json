@@ -38,7 +38,9 @@
   ],
   "license": "MIT",
   "config": {},
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
+    "xmake": "~0.3.5"
   },
   "xpack": {
     "dependencies": {
@@ -48,6 +50,10 @@
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
       ,"@sifive/coreplex-arty-boards": "~0.0.5"
 {% endif -%}
+    },
+    "devDependencies": {
+      "riscv-elf-gcc": "~0.0.1",
+      "openocd": "~0.0.1"
     }
   }
 }
