@@ -27,91 +27,44 @@
       "integrity": "sha512-DJ1+iMwDFH/kvsXqJ2mp5ykGAB3llctgmwV36XNXjufvjdSxhmLx04ECBGei/yNINiqdVajRdBQ6Ins+zwFp3Q=="
     },
     "@micro-os-plus/c-libs": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/@micro-os-plus/c-libs/-/c-libs-1.0.1.tgz",
-      "integrity": "sha512-imDZd0Us6CijMKtBrDC73NQ+MfhD9wBLodXu2HxqK+Psvi5KmBbP5bzVox2aFWuk72/8B4V3GmZ+4/Ihx0IVew=="
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@micro-os-plus/c-libs/-/c-libs-1.0.2.tgz",
+      "integrity": "sha512-LNLslWkAXgdYtuOWLKIU8hEqGK4nxzwwvzQGbMhHheYtGt5OlFWmugnpEIfAHtaxMjgVl+ZDdcq2AAnNxspYyQ=="
     },
     "@micro-os-plus/cpp-libs": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/@micro-os-plus/cpp-libs/-/cpp-libs-1.0.1.tgz",
-      "integrity": "sha512-hUKd7COIlHr67PRfgv22SGAZSRHN6GRTZcANeRvxtfJc86yEqpbylx6AayyePCckkwkmlADo2pFP6NWTQ6u2Cg=="
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@micro-os-plus/cpp-libs/-/cpp-libs-1.0.2.tgz",
+      "integrity": "sha512-gCaS6FXhYNR7QX6sHRmdBLIA+D3M2L3EHXbJRwUMw9G1E4LBQ8zIDS/+z+t5h2wDG5/T+m/zBx+WeXlx9TEmEw=="
     },
     "@micro-os-plus/diag-trace": {
-      "version": "1.0.1",
-      "resolved": "https://registry.npmjs.org/@micro-os-plus/diag-trace/-/diag-trace-1.0.1.tgz",
-      "integrity": "sha512-x6OyE5SlfBqlT/uQgHHrAm50aSAu/F20TX/aNRI/BZBDRXJ6zl2HwMcS0XBIJoL0AkCEbJNe/oSBSgDjtA6bMA=="
+      "version": "1.0.2",
+      "resolved": "https://registry.npmjs.org/@micro-os-plus/diag-trace/-/diag-trace-1.0.2.tgz",
+      "integrity": "sha512-rzQqIJCCfIneAA5rRaWJdFUujURrqmJcucv/28kdafq+E1AphhDIFyOZ+142UdFUYwgV7eP4bJoUgmnm/1rU/A=="
+    },
+    "@micro-os-plus/riscv-arch": {
+      "version": "0.0.4",
+      "resolved": "https://registry.npmjs.org/@micro-os-plus/riscv-arch/-/riscv-arch-0.0.4.tgz",
+      "integrity": "sha512-XFjyV96/BKERY42rxoSJ2/NlXtsbqk/4tZhnEDMhuZIoSmE418GpvNGMFyEBP2I9BmPlvbIO1rndLx5nr53g0Q=="
+    },
+    "@micro-os-plus/startup": {
+      "version": "1.0.3",
+      "resolved": "https://registry.npmjs.org/@micro-os-plus/startup/-/startup-1.0.3.tgz",
+      "integrity": "sha512-BSzmLz2ePYNndK689lMz7Q5DboChqkA3YtwF3ccEczpIb8bIaLW/LLC9cLBy+HXRCVx3WI05LxqH2lmISBRD7w=="
     },
     "@sifive/coreplex-arty-boards": {
-      "version": "0.0.4",
-      "resolved": "https://registry.npmjs.org/@sifive/coreplex-arty-boards/-/coreplex-arty-boards-0.0.4.tgz",
-      "integrity": "sha512-0Z3hqsENtQJOd6sE2PHcFmySvU/j6NsP4VZfypB7rqTorPNLrEk6Sci3yGwI9k+U9FqDNHT9HFLcukpA0cf29A==",
-      "requires": {
-        "@sifive/coreplex-devices": "0.0.4"
-      },
-      "dependencies": {
-        "@micro-os-plus/riscv-arch": {
-          "version": "0.0.3",
-          "resolved": "https://registry.npmjs.org/@micro-os-plus/riscv-arch/-/riscv-arch-0.0.3.tgz",
-          "integrity": "sha512-joMaJGxoOg0g3+c6LYwQdhr8ehtPB+JYB50AyVIzUIeu28VFBijYsIVnEl5Sl2JAySeWJAR4fEe2xRQL6N5Ccw==",
-          "requires": {
-            "@micro-os-plus/startup": "1.0.2"
-          }
-        },
-        "@micro-os-plus/startup": {
-          "version": "1.0.2",
-          "resolved": "https://registry.npmjs.org/@micro-os-plus/startup/-/startup-1.0.2.tgz",
-          "integrity": "sha512-VdjHlu9l/s0ZZLKGVqThTTDcn3iA1ojNxieqgKTI4eKmf1id81PntteWgcOVNmZCkRMyArq+W0avovvasCd6Eg==",
-          "requires": {
-            "@micro-os-plus/c-libs": "1.0.1",
-            "@micro-os-plus/cpp-libs": "1.0.1",
-            "@micro-os-plus/diag-trace": "1.0.1"
-          }
-        },
-        "@sifive/coreplex-devices": {
-          "version": "0.0.4",
-          "resolved": "https://registry.npmjs.org/@sifive/coreplex-devices/-/coreplex-devices-0.0.4.tgz",
-          "integrity": "sha512-fUk33Nk23JNz+IQX170u4FIBzeFC3zQvoW2buDddq/q+ZlQxO8Rwf/5jIOmcqO+DZTs0daKipnVWurHe4TWEKA==",
-          "requires": {
-            "@micro-os-plus/riscv-arch": "0.0.3"
-          }
-        }
-      }
+      "version": "0.0.5",
+      "resolved": "https://registry.npmjs.org/@sifive/coreplex-arty-boards/-/coreplex-arty-boards-0.0.5.tgz",
+      "integrity": "sha512-LPF4/IwjeB4gdWUqPeQutk9yMNfC0Nkyi9ck9M59evYOFwo+jQp1Xf48pZQQKtpl2lNzxta7KkttmoBS+eA9mw=="
+    },
+    "@sifive/coreplex-devices": {
+      "version": "0.0.5",
+      "resolved": "https://registry.npmjs.org/@sifive/coreplex-devices/-/coreplex-devices-0.0.5.tgz",
+      "integrity": "sha512-mWP8ZfQvFoVZHaC1QigYKs2AtVF7q5k/A+kFUMy3OnJ5k+7ciLkpkkpoFQvUNwFAGMC8m7+jP/zVJnU2c+LrcA=="
     },
     "@sifive/hifive1-board": {
-      "version": "0.0.4",
-      "resolved": "https://registry.npmjs.org/@sifive/hifive1-board/-/hifive1-board-0.0.4.tgz",
-      "integrity": "sha512-h/n9P7fVc+cCxSRthJrLJ9RNAZDawkm/+IA3WxfaSalPj0hmJdmgQqeJi99+Jvo0+81KwSfmY3OVH91mu1y72w==",
-      "requires": {
-        "@sifive/coreplex-devices": "0.0.4"
-      },
-      "dependencies": {
-        "@micro-os-plus/riscv-arch": {
-          "version": "0.0.3",
-          "resolved": "https://registry.npmjs.org/@micro-os-plus/riscv-arch/-/riscv-arch-0.0.3.tgz",
-          "integrity": "sha512-joMaJGxoOg0g3+c6LYwQdhr8ehtPB+JYB50AyVIzUIeu28VFBijYsIVnEl5Sl2JAySeWJAR4fEe2xRQL6N5Ccw==",
-          "requires": {
-            "@micro-os-plus/startup": "1.0.2"
-          }
-        },
-        "@micro-os-plus/startup": {
-          "version": "1.0.2",
-          "resolved": "https://registry.npmjs.org/@micro-os-plus/startup/-/startup-1.0.2.tgz",
-          "integrity": "sha512-VdjHlu9l/s0ZZLKGVqThTTDcn3iA1ojNxieqgKTI4eKmf1id81PntteWgcOVNmZCkRMyArq+W0avovvasCd6Eg==",
-          "requires": {
-            "@micro-os-plus/c-libs": "1.0.1",
-            "@micro-os-plus/cpp-libs": "1.0.1",
-            "@micro-os-plus/diag-trace": "1.0.1"
-          }
-        },
-        "@sifive/coreplex-devices": {
-          "version": "0.0.4",
-          "resolved": "https://registry.npmjs.org/@sifive/coreplex-devices/-/coreplex-devices-0.0.4.tgz",
-          "integrity": "sha512-fUk33Nk23JNz+IQX170u4FIBzeFC3zQvoW2buDddq/q+ZlQxO8Rwf/5jIOmcqO+DZTs0daKipnVWurHe4TWEKA==",
-          "requires": {
-            "@micro-os-plus/riscv-arch": "0.0.3"
-          }
-        }
-      }
+      "version": "0.0.5",
+      "resolved": "https://registry.npmjs.org/@sifive/hifive1-board/-/hifive1-board-0.0.5.tgz",
+      "integrity": "sha512-63k1NjHKE+7v4cntu4uRVUC0bL0zYIha3tiLteZ6S8+mG3w8hwcbDz47ivHwP6yTruozl9X8VWkUglCHbDTKpw=="
     },
     "acorn": {
       "version": "5.1.2",
