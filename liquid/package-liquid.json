@@ -2,10 +2,10 @@
   "name": "{{ projectName }}",
   "version": "1.0.0",
   "description": "An xPack with a {{ content }} application running on {{ boardDescription }}",
-  "xpack": {},
   "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "xmake build"
   },
   "repository": {
     "type": "git",
@@ -16,6 +16,7 @@
   },
   "homepage": "https://github.com/<user-id>/{{ projectName }}",
   "keywords": [
+    "xpack",
     "c",
     "c++",
     "micro-os-plus",
@@ -38,11 +39,15 @@
   "license": "MIT",
   "config": {},
   "dependencies": {
-    "@micro-os-plus/diag-trace": "~1.0.1"
+  },
+  "xpack": {
+    "dependencies": {
+      "@micro-os-plus/diag-trace": "~1.0.2"
 {% if boardName == 'hifive1' -%}
-    ,"@sifive/hifive1-board": "~0.0.3"
+      ,"@sifive/hifive1-board": "~0.0.5"
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
-    ,"@sifive/coreplex-arty-boards": "~0.0.3"
+      ,"@sifive/coreplex-arty-boards": "~0.0.5"
 {% endif -%}
+    }
   }
 }
