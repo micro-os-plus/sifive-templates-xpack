@@ -4,7 +4,7 @@ These are Liquid templates used to generate the projects for the SiFive Coreplex
 
 ## Developer info
 
-This section is intended for developers who plan to use this pacakge to create projects for SiFive Coreplex.
+This section is intended for developers who plan to use this package to create projects for SiFive Coreplex.
 
 ### Easy install
 
