@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v0.0.11 (2017-10-04)
+
+* remove shrinkwrap, recreate lock
+
 ### v0.0.10 (2017-10-04)
 
 * `package.json` clean-ups
