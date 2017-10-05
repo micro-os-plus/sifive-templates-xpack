@@ -58,6 +58,10 @@
 //
 // ----------------------------------------------------------------------------
 
+{% if language == 'cpp' -%}
+using namespace os;
+{% endif -%}
+
 {% if content == 'blinky' -%}
 {% if language == 'cpp' -%}
 // Definitions visible only within this translation unit.
@@ -149,7 +153,7 @@ main (int argc, char* argv[])
 {% if trace != 'none' -%}
   // Send a greeting to the trace device (skipped on Release).
 {% if language == 'cpp' -%}
-  os::trace::puts ("Hello RISC-V World!");
+  trace::puts ("Hello RISC-V World!");
 {% elsif language == 'c' -%}
   trace_puts ("Hello RISC-V World!");
 {% endif -%}
@@ -167,7 +171,7 @@ main (int argc, char* argv[])
   // at high speed.
 {% if trace != 'none' -%}
 {% if language == 'cpp' -%}
-  os::trace::printf ("System clock: %u Hz\n",
+  trace::printf ("System clock: %u Hz\n",
                      riscv::core::running_frequency_hz ());
 {% elsif language == 'c' -%}
   trace_printf ("System clock: %u Hz\n",
@@ -224,7 +228,7 @@ main (int argc, char* argv[])
 {% if trace != 'none' -%}
 
   ++seconds;
-  os::trace::printf ("Second %u\n", seconds);
+  trace::printf ("Second %u\n", seconds);
 {% endif -%}
 {% elsif language == 'c' -%}
   os_sysclock_sleep_for (BLINK_OFF_TICKS);
@@ -262,7 +266,7 @@ main (int argc, char* argv[])
 {% if trace != 'none' -%}
 
       ++seconds;
-      os::trace::printf ("Second %u\n", seconds);
+      trace::printf ("Second %u\n", seconds);
 {% endif -%}
 {% elsif language == 'c' -%}
       led_turn_on (&blink_leds[count]);
@@ -297,7 +301,7 @@ main (int argc, char* argv[])
 {% if trace != 'none' -%}
 
       ++seconds;
-      os::trace::printf ("Second %u\n", seconds);
+      trace::printf ("Second %u\n", seconds);
 {% endif -%}
 {% elsif language == 'c' -%}
       os_sysclock_sleep_for (os_sysclock_get_frequency_hz ());
