@@ -2,6 +2,12 @@
 
 Changes in reverse chronological order.
 
+### v0.0.13 (2017-10-05)
+
+* main-liquid.c.cpp: add 'using namespace os;'
+* package-liquid.json: add script for 'clean'
+* package.json: update GitHub links to -xpack
+
 ### v0.0.12 (2017-10-04)
 
 * package-liquid.json: add devDependencies
