@@ -53,8 +53,8 @@
 {% endif -%}
     },
     "devDependencies": {
-      "riscv-elf-gcc": "~0.0.1",
-      "openocd": "~0.0.1"
+      "@gnu-mcu-eclipse/riscv-none-gcc": "~0.0.1",
+      "@gnu-mcu-eclipse/openocd": "~0.0.1"
     }
   }
 }
