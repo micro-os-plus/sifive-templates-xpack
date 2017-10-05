@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v0.0.14 (2017-10-05)
+
+* main-liquid.c.cpp: remove c empty line
+
 ### v0.0.13 (2017-10-05)
 
 * main-liquid.c.cpp: add 'using namespace os;'
