@@ -5,7 +5,8 @@
   "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "xmake build"
+    "build": "xmake build -- all",
+    "clean": "xmake build -- clean"
   },
   "repository": {
     "type": "git",
