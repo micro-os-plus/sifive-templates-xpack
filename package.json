@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micro-os-plus/sifive-coreplex-templates.git"
+    "url": "git+https://github.com/micro-os-plus/sifive-coreplex-templates-xpack.git"
   },
   "keywords": [
     "c++",
@@ -33,9 +33,9 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-os-plus/sifive-coreplex-templates/issues"
+    "url": "https://github.com/micro-os-plus/sifive-coreplex-templates-xpack/issues"
   },
-  "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates",
+  "homepage": "https://github.com/micro-os-plus/sifive-coreplex-templates-xpack",
   "dependencies": {
     "@sifive/coreplex-arty-boards": "~0.0.5",
     "@sifive/hifive1-board": "~0.0.5",

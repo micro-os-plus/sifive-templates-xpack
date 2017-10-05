@@ -16,15 +16,15 @@ On GNU/Linux and macOS this looks like (on Windows `sudo` is not necessary):
 $ sudo npm install @sifive/coreplex-templates --global
 ```
 
-This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-coreplex-templates):
+This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-coreplex-templates-xpack):
 
 ```bash
-$ git clone https://github.com/micro-os-plus/sifive-coreplex-templates.git sifive-coreplex-templates.git
+$ git clone https://github.com/micro-os-plus/sifive-coreplex-templates-xpack.git sifive-coreplex-templates-xpack.git
 ```
 
 ### Prerequisites
 
-Installing from npm requires a recent [nodejs](https://nodejs.org) (>7.x) the 6.x LTS version is not compatible. 
+Installing from npm requires a recent [nodejs](https://nodejs.org) (>7.x); the 6.x LTS version is not compatible. 
 
 ## Command line usage
 
@@ -37,8 +37,8 @@ There are two modes, interactive and scriptable.
 Starting the tool without any command line options will select the interactive mode, where the user can manually enter each choice.
 
 ```bash
-$ mkdir -p /tmp/hifive1-blinky
-$ cd /tmp/hifive1-blinky
+$ mkdir -p /tmp/hifive1-blinky-cpp
+$ cd /tmp/hifive1-blinky-cpp
 $ xpm-init-sifive-coreplex-project 
 Generate a SiFive Coreplex C/C++ project
 
@@ -53,7 +53,7 @@ Enable -Werror? (true, false, ?) [false]:
 Use -Og on debug? (true, false, ?) [false]: 
 Use newlib nano? (true, false, ?) [true]: 
 
-Creating the C++ project 'hifive1-blinky'...
+Creating the C++ project 'hifive1-blinky-cpp'...
 File 'LICENSE' generated.
 File 'oocd.launch' generated.
 File 'package.json' generated.
@@ -85,11 +85,11 @@ $
 For scriptable uses, it is also possible to pass all required data on the command line. The only mandatory property is `boardName`, all other have defaults.
 
 ```bash
-$ cd /tmp/hifive1-blinky
+$ cd /tmp/hifive1-blinky-cpp
 $ xpm-init-sifive-coreplex-project --property boardName=hifive1
 Generate a SiFive Coreplex C/C++ project
 
-Creating the C++ project 'hifive1-blinky'...
+Creating the C++ project 'hifive1-blinky-cpp'...
 - boardName=hifive1
 - content=blinky
 - syscalls=retarget
@@ -134,10 +134,10 @@ The generated projects include some additional metadata that can be used to auto
 
 This metadata can be directly consumed by `xmake`, for example to generate `make` files. 
 
-To run the build, be sure the `riscv64-unknown-elf` toolchain is in the path and `xmake` is installed globally.
+To run the build, be sure the `riscv64-unknown-elf` toolchain is in the path and `xmake` is installed globally (see [xmake](https://www.npmjs.com/package/xmake) for details).
 
 ```bash
-$ cd /tmp/hifive1-blinky
+$ cd /tmp/hifive1-blinky-cpp
 $ xmake build -v -- clean all
 ```
 
