@@ -60,8 +60,8 @@
 
 {% if language == 'cpp' -%}
 using namespace os;
-{% endif -%}
 
+{% endif -%}
 {% if content == 'blinky' -%}
 {% if language == 'cpp' -%}
 // Definitions visible only within this translation unit.
