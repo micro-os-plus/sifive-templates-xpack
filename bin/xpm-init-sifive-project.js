@@ -32,20 +32,20 @@
 
 /*
  * On POSIX platforms, when installing a global package,
- * a symbolic link named `xgen-sifive-coreplex-project` is created
+ * a symbolic link named `xpm-init-sifive-project` is created
  * in the `/usr/local/bin` folder (on macOS), or
  * in the `/usr/bin` folder (on Ubuntu), pointing to this file.
  *
  * On Windows, where symbolic links are not available,
  * when installing a global package,
  * two forwarders are automatically created in the
- * user `\AppData\Roaming\npm\node_modules\sifive-coreplex-templates\bin` folder:
- * - `xgen-sifive-coreplex-project.cmd`, for invocation from the Windows command line
- * - `xgen-sifive-coreplex-project` (a shell script), for invokations from an optional
+ * user `\AppData\Roaming\npm\node_modules\xpm-init-sifive-templates\bin` folder:
+ * - `xpm-init-sifive-project.cmd`, for invocation from the Windows command line
+ * - `xpm-init-sifive-project` (a shell script), for invokations from an optional
  * POSIX environments like minGW-w64, msys2, git shell, etc.
  *
  * On all platforms, `process.argv[1]` will be the full path of
- * this file, or the full path of the `xgen-sifive-coreplex-project` link, so, in case
+ * this file, or the full path of the `xpm-init-sifive-project` link, so, in case
  * the program will need to be invoked with different names,
  * this is the method to differentiate between them.
  */
