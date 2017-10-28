@@ -71,8 +71,7 @@ SECTIONS
     .trap_entry : ALIGN(4)
     {
         *(.exceptions_array .exceptions_array.*)
-        *(.interrupts_local_arch_array .interrupts_local_arch_array.*)
-        *(.interrupts_local_device_array .interrupts_local_device_array.*)
+        *(.interrupts_local_array .interrupts_local_array.*)
         *(.interrupts_global_array .interrupts_global_array.*)
         *(.trap_entry .trap_entry.*)
         *(.traps_handlers .traps_handlers.*)
