@@ -23,7 +23,7 @@
     "micro-os-plus",
     "risc-v",
     "sifive",
-    "coreplex"
+    "corecomplex"
   ],
   "author": {
     "name": "",
@@ -47,9 +47,9 @@
     "dependencies": {
       "@micro-os-plus/diag-trace": "~1.0.2"
 {% if boardName == 'hifive1' -%}
-      ,"@sifive/hifive1-board": "~0.0.5"
+      ,"@sifive/hifive1-board": "~0.1.0"
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
-      ,"@sifive/coreplex-arty-boards": "~0.0.5"
+      ,"@sifive/arty-boards": "~0.1.0"
 {% endif -%}
     },
     "devDependencies": {

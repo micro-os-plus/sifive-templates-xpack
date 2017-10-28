@@ -22,11 +22,11 @@ Most of the xPacks are part of the [µOS++](http://micro-os-plus.github.io) proj
 ### Architecture/device/board files
 
 - `micro-os-plus-riscv-arch` RISC-V architecture files
-- `sifive-coreplex-devices` SiFive Coreplex IP devices files
+- `sifive-devices` SiFive Core Complex IP devices files
 {% if boardName == 'hifive1' -%}
 - `sifive-hifive1-board` SiFive Freedom E310 HiFive1 files
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
-- `coreplex-arty-boards` SiFive Coreplex IP Arty FPGA files
+- `arty-boards` SiFive Core Complex IP Arty FPGA files
 {% endif -%}
 
 ## Debug
@@ -59,4 +59,4 @@ If you do not like the large number of source folders shown by Eclipse in the Pr
 ## License
 
 Unless otherwise mentioned, all **µOS++** components are provided **free of charge** 
-under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+under the terms of the [MIT License](https://opensource.org/licenses/MIT) with all rights reserved to Liviu Ionescu.

@@ -60,19 +60,20 @@ os_startup_initialize_hardware_early (void)
 {% if deviceName == 'fe310' -%}
   // TODO: add to C/C++ API
   // Make sure the HFROSC is on before the next line:
-  riscv_device_prci_ptr->hfrosccfg |= ROSC_EN(1);
+  PRCI->hfrosccfg_bits.en = 1;
   // Run off 16 MHz Crystal for accuracy.
-  riscv_device_prci_ptr->pllcfg = (PLL_REFSEL(1) | PLL_BYPASS(1));
-  riscv_device_prci_ptr->pllcfg |= (PLL_SEL(1));
+  PRCI->pllcfg_bits.sel = 1;
+  PRCI->pllcfg_bits.bypass = 1;
+  PRCI->pllcfg_bits.sel = 0;
   // Turn off HFROSC to save power
-  riscv_device_prci_ptr->hfrosccfg &= ~((uint32_t)ROSC_EN(1));
+  PRCI->hfrosccfg_bits.en = 0;
 
 {% endif -%}
 {% if boardName == 'e31arty' or  boardName == 'e51arty' -%}
   // For the Arty board, be sure LED1 is off, since it is very bright.
-  riscv_device_pwm0_ptr->pwmcmp1 = 0xFF;
-  riscv_device_pwm0_ptr->pwmcmp2 = 0xFF;
-  riscv_device_pwm0_ptr->pwmcmp3 = 0xFF;
+  PWM0->cmp_bits[1].value = 0xFF;
+  PWM0->cmp_bits[1].value = 0xFF;
+  PWM0->cmp_bits[1].value = 0xFF;
 
 {% endif -%}
   // TODO: check Arduino main.cpp for more/better initialisations.
@@ -128,18 +129,18 @@ os_startup_initialize_hardware (void)
   // Configure Button 0 as a global GPIO irq.
 
   // Disable output.
-  riscv_device_gpio_ptr->output_en &= ~(1u << BUTTON_0_OFFSET);
+  GPIO->outputen &= ~(1u << BUTTON_0_OFFSET);
 
   // Disable hw io function
-  riscv_device_gpio_ptr->iof_en &= ~(1u << BUTTON_0_OFFSET);
+  GPIO->iofen &= ~(1u << BUTTON_0_OFFSET);
 
   // Configure as input
-  riscv_device_gpio_ptr->input_en |= (1u << BUTTON_0_OFFSET);
-  riscv_device_gpio_ptr->pue |= (1u << BUTTON_0_OFFSET);
+  GPIO->inputen |= (1u << BUTTON_0_OFFSET);
+  GPIO->pue |= (1u << BUTTON_0_OFFSET);
 
   // Configure to interrupt on both falling and rising edges.
-  riscv_device_gpio_ptr->fall_ie |= (1u << BUTTON_0_OFFSET);
-  riscv_device_gpio_ptr->rise_ie |= (1u << BUTTON_0_OFFSET);
+  GPIO->fallie |= (1u << BUTTON_0_OFFSET);
+  GPIO->riseie |= (1u << BUTTON_0_OFFSET);
 
   // Enable the BUTTON interrupt in PLIC.
 {% if language == 'cpp' -%}

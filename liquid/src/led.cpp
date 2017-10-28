@@ -33,7 +33,7 @@
 
 led::led (unsigned int port, unsigned int bit, bool active_low)
 {
-  gpio_ptr_ = riscv_device_gpio_ptr; // Fixed, there is only one GPIO port.
+  gpio_ptr_ = GPIO; // Fixed, there is only one GPIO port.
   port_number_ = (uint16_t) port;
   bit_number_ = (uint16_t) bit;
   is_active_low_ = active_low;
@@ -44,11 +44,11 @@ void
 led::power_up ()
 {
   // Disable I/O Functions on this bit, keep it as plain digital pin.
-  gpio_ptr_->iof_en &= ~bit_mask_;
+  gpio_ptr_->iofen &= ~bit_mask_;
   // Clear the toggle bit.
-  gpio_ptr_->out_xor &= ~bit_mask_;
+  gpio_ptr_->outxor &= ~bit_mask_;
   // Enable output.
-  gpio_ptr_->output_en |= bit_mask_;
+  gpio_ptr_->outputen |= bit_mask_;
 
   // Start with led turned off
   turn_off ();
@@ -83,7 +83,7 @@ led::turn_off ()
 void
 led::toggle ()
 {
-  gpio_ptr_->out_xor |= bit_mask_;
+  gpio_ptr_->outxor |= bit_mask_;
 }
 
 bool

@@ -1,7 +1,7 @@
 /*
  * This file is part of the µOS++ distribution.
  *   (https://github.com/micro-os-plus)
- * Copyright (c) 2016 Liviu Ionescu.
+ * Copyright (c) 2017 Liviu Ionescu.
  *
  * Permission is hereby granted, free of charge, to any person
  * obtaining a copy of this software and associated documentation
@@ -31,45 +31,63 @@
 #include <micro-os-plus/device.h>
 
 #include <stdint.h>
+#include <stdbool.h>
+
+#if defined(__cplusplus)
+extern "C"
+{
+#endif /* __cplusplus */
 
 // ----------------------------------------------------------------------------
+
+  /*
+   * Functions to manage a discrete (on/off) LED.
+   */
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wpadded"
 
-/*
- * Simple class to manage a discrete (on/off) LED.
- */
-class led
-{
-public:
-  led (unsigned int port, unsigned int bit, bool active_low);
-
-  void
-  power_up ();
-
-  void
-  turn_on ();
-
-  void
-  turn_off ();
-
-  void
-  toggle ();
-
-  bool
-  is_on ();
-
-private:
-  riscv::device::gpio_t* gpio_ptr_;
-  uint16_t port_number_;
-  uint16_t bit_number_;
-  uint32_t bit_mask_;
-  bool is_active_low_;
-};
+// Instance data.
+  typedef struct led_s
+  {
+{% if deviceName == 'fe310' -%}
+    sifive_fe310_gpio_t* gpio_ptr_;
+{% elsif deviceName == 'e31' -%}
+    sifive_e31arty_gpio_t* gpio_ptr_;
+{% elsif deviceName == 'e51' -%}
+    sifive_e51arty_gpio_t* gpio_ptr_;
+{% endif %}
+    uint16_t port_number_;
+    uint16_t bit_number_;
+    uint32_t bit_mask_;
+    bool is_active_low_;
+  } led_t;
 
 #pragma GCC diagnostic pop
 
+  void
+  led_construct (led_t* _this, unsigned int port, unsigned int bit,
+                 bool active_low);
+
+  void
+  led_power_up (led_t* _this);
+
+  void
+  led_turn_on (led_t* _this);
+
+  void
+  led_turn_off (led_t* _this);
+
+  void
+  led_toggle (led_t* _this);
+
+  bool
+  led_is_on (led_t* _this);
+
 // ----------------------------------------------------------------------------
+
+#if defined(__cplusplus)
+}
+#endif /* __cplusplus */
 
 #endif /* LED_H_ */

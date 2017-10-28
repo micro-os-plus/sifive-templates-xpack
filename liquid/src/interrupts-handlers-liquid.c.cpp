@@ -29,7 +29,10 @@
 #include <micro-os-plus/diag/trace.h>
 #include <sysclock.h>
 
-{% if language == 'c' -%}
+{% if language == 'cpp' -%}
+using namespace os;
+
+{% elsif language == 'c' -%}
 #include <stdbool.h>
 
 {% endif -%}
@@ -105,7 +108,7 @@ riscv_interrupt_local_handle_machine_timer (void)
 {% if language == 'cpp' -%}
   riscv::device::mtimecmp (cmp);
 
-  // os::trace::putchar('.');
+  // trace::putchar('.');
 {% elsif language == 'c' -%}
   riscv_device_write_mtimecmp (cmp);
 
@@ -134,18 +137,18 @@ void
 riscv_interrupt_global_handle_gpio4 (void)
 {% endif -%}
 {
-  if (riscv_device_gpio_ptr->rise_ip & (1 << BUTTON_0_OFFSET))
+  if (GPIO->riseip & (1 << BUTTON_0_OFFSET))
     {
 {% if boardName == 'hifive1' -%}
 {% if language == 'cpp' -%}
-      os::trace::putchar ('u');
+      trace::putchar ('u');
 {% elsif language == 'c' -%}
       trace_putchar ('u');
 {% endif -%}
       button_released = true;
 {% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
 {% if language == 'cpp' -%}
-      os::trace::putchar ('d');
+      trace::putchar ('d');
 {% elsif language == 'c' -%}
       trace_putchar ('d');
 {% endif -%}
@@ -153,21 +156,21 @@ riscv_interrupt_global_handle_gpio4 (void)
 {% endif -%}
 
       // Clear rising interrupt.
-      riscv_device_gpio_ptr->rise_ip |= (1 << BUTTON_0_OFFSET);
+      GPIO->riseip |= (1 << BUTTON_0_OFFSET);
     }
 
-  if (riscv_device_gpio_ptr->fall_ip & (1 << BUTTON_0_OFFSET))
+  if (GPIO->fallip & (1 << BUTTON_0_OFFSET))
     {
 {% if boardName == 'hifive1' -%}
 {% if language == 'cpp' -%}
-      os::trace::putchar ('d');
+      trace::putchar ('d');
 {% elsif language == 'c' -%}
       trace_putchar ('d');
 {% endif -%}
       button_pushed = true;
 {% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
 {% if language == 'cpp' -%}
-      os::trace::putchar ('u');
+      trace::putchar ('u');
 {% elsif language == 'c' -%}
       trace_putchar ('u');
 {% endif -%}
@@ -175,7 +178,7 @@ riscv_interrupt_global_handle_gpio4 (void)
 {% endif -%}
 
       // Clear falling interrupt.
-      riscv_device_gpio_ptr->fall_ip |= (1 << BUTTON_0_OFFSET);
+      GPIO->fallip |= (1 << BUTTON_0_OFFSET);
     }
 }
 

@@ -1,10 +1,10 @@
-## Templates to generate SiFive Coreplex projects
+## Templates to generate SiFive Core Complex projects
 
-These are Liquid templates used to generate the projects for the SiFive Coreplex devices/boards.
+These are Liquid templates used to generate the projects for the SiFive Core Complex devices/boards.
 
 ## Developer info
 
-This section is intended for developers who plan to use this package to create projects for SiFive Coreplex.
+This section is intended for developers who plan to use this package to create projects for SiFive Core Complex.
 
 ### Easy install
 
@@ -12,14 +12,14 @@ To be able to use the command line tool, this package can be installed globally 
 
 On GNU/Linux and macOS this looks like (on Windows `sudo` is not necessary):
 
-```bash
-$ sudo npm install @sifive/coreplex-templates --global
+```console
+$ sudo npm install @sifive/templates --global
 ```
 
-This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-coreplex-templates-xpack):
+This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-templates-xpack):
 
-```bash
-$ git clone https://github.com/micro-os-plus/sifive-coreplex-templates-xpack.git sifive-coreplex-templates-xpack.git
+```console
+$ git clone https://github.com/micro-os-plus/sifive-templates-xpack.git sifive-templates-xpack.git
 ```
 
 ### Prerequisites
@@ -28,7 +28,7 @@ Installing from npm requires a recent [nodejs](https://nodejs.org) (>7.x); the 6
 
 ## Command line usage
 
-The package includes an experimental tool `xpm-init-sifive-coreplex-project` that can be used in command line environments to create projects.
+The package includes an experimental tool `xpm-init-sifive-project` that can be used in command line environments to create projects.
 
 The tool should be started in an empty folder, where the project will be generated.
 
@@ -36,11 +36,11 @@ There are two modes, interactive and scriptable.
 
 Starting the tool without any command line options will select the interactive mode, where the user can manually enter each choice.
 
-```bash
+```console
 $ mkdir -p /tmp/hifive1-blinky-cpp
 $ cd /tmp/hifive1-blinky-cpp
-$ xpm-init-sifive-coreplex-project 
-Generate a SiFive Coreplex C/C++ project
+$ xpm-init-sifive-project 
+Generate a SiFive Core Complex C/C++ project
 
 Programming language? (c, cpp, ?) [cpp]: 
 Board? (hifive1, e31arty, e51arty, ?) [hifive1]: 
@@ -76,7 +76,7 @@ Folder 'xpacks/micro-os-plus-diag-trace' copied.
 Folder 'xpacks/micro-os-plus-riscv-arch' copied.
 Folder 'xpacks/micro-os-plus-startup' copied.
 Folder 'xpacks/sifive-hifive1-board' copied.
-Folder 'xpacks/sifive-coreplex-devices' copied.
+Folder 'xpacks/sifive-devices' copied.
 
 Done in 202 ms.
 $ 
@@ -84,10 +84,10 @@ $
 
 For scriptable uses, it is also possible to pass all required data on the command line. The only mandatory property is `boardName`, all other have defaults.
 
-```bash
+```console
 $ cd /tmp/hifive1-blinky-cpp
-$ xpm-init-sifive-coreplex-project --property boardName=hifive1
-Generate a SiFive Coreplex C/C++ project
+$ xpm-init-sifive-project --property boardName=hifive1
+Generate a SiFive Core Complex C/C++ project
 
 Creating the C++ project 'hifive1-blinky-cpp'...
 - boardName=hifive1
@@ -122,7 +122,7 @@ Folder 'xpacks/micro-os-plus-diag-trace' copied.
 Folder 'xpacks/micro-os-plus-riscv-arch' copied.
 Folder 'xpacks/micro-os-plus-startup' copied.
 Folder 'xpacks/sifive-hifive1-board' copied.
-Folder 'xpacks/sifive-coreplex-devices' copied.
+Folder 'xpacks/sifive-devices' copied.
 
 Done in 153 ms.
 $
@@ -136,12 +136,20 @@ This metadata can be directly consumed by `xmake`, for example to generate `make
 
 To run the build, be sure the `riscv64-unknown-elf` toolchain is in the path and `xmake` is installed globally (see [xmake](https://www.npmjs.com/package/xmake) for details).
 
-```bash
+```console
 $ cd /tmp/hifive1-blinky-cpp
 $ xmake build -v -- clean all
 ```
 
 (for a less verbose output, remove `-v`).
+
+### How to publish
+
+* commit all changes
+* update `CHANGELOG.md`; commit with a message like _prepare v0.1.2_
+* `npm version patch`
+* push all changes to GitHub
+* `npm publish`
 
 ## License
 

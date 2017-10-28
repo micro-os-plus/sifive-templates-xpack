@@ -1,5 +1,5 @@
 /*
- * Memory Spaces Definitions for the SiFive Coreplex IP E51 Arty board.
+ * Memory Spaces Definitions for the SiFive Core Complex IP E51 Arty board.
  *
  * The values below can be addressed in further linker scripts
  * using functions like 'ORIGIN(RAM)' or 'LENGTH(RAM)'.
@@ -13,7 +13,7 @@ MEMORY
 
 /*
 
-Table 5.1: E51 Coreplex Coreplex Series Physical Memory Map.
+Table 5.1: E51 Core Complex Series Physical Memory Map.
 
 = Debug (4 KiB) =
 0x0000 0000 	0x0000 00FF		Reserved
@@ -28,14 +28,14 @@ Table 5.1: E51 Coreplex Coreplex Series Physical Memory Map.
  
 0x0000 1000		0x01FF FFFF		Reserved
 
-= On-Coreplex Devices (224 MiB) = 
-0x0200 0000		0x0200 FFFF		Coreplex-Local Interrupts (CLINT) (<= 64 KiB)
+= On-Core Complex Devices (224 MiB) = 
+0x0200 0000		0x0200 FFFF		Core Complex-Local Interrupts (CLINT) (<= 64 KiB)
 0x0201 0000		0x07FF FFFF		Reserved
 0x0800 0000		0x0800 1FFF		Instruction Tightly Integrated Memory (ITIM) (8 KiB)
 0x0800 2000		0x0BFF FFFF		Reserved
 0x0C00 0000		0x0FFF FFFF		Platform-Level Interrupt Control (PLIC) (64 MiB)
 
-= Off-Coreplex address space for external I/O =
+= Off-Core Complex address space for external I/O =
 0x1000 0000		0x1FFF FFFF		Reserved
 0x2000 0000 	0x3FFF FFFF		Peripheral Bus (512 MiB)
 0x4000 0000		0x5FFF FFFF		System Bus (512 MiB)
