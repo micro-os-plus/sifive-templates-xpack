@@ -52,9 +52,9 @@ extern "C"
   {
 {% if deviceName == 'fe310' -%}
     sifive_fe310_gpio_t* gpio_ptr_;
-{% elsif deviceName == 'e31' -%}
+{% elsif deviceName == 'e31arty' -%}
     sifive_e31arty_gpio_t* gpio_ptr_;
-{% elsif deviceName == 'e51' -%}
+{% elsif deviceName == 'e51arty' -%}
     sifive_e51arty_gpio_t* gpio_ptr_;
 {% endif %}
     uint16_t port_number_;
