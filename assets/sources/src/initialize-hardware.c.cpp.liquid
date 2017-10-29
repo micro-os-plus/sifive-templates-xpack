@@ -111,7 +111,7 @@ os_startup_initialize_hardware (void)
 {% if language == 'cpp' -%}
   riscv::csr::clear_mie_bits (RISCV_CSR_MIP_MTIP);
 {% elsif language == 'c' -%}
-  riscv_csr_clear_mie_bits_bits (RISCV_CSR_MIP_MTIP);
+  riscv_csr_clear_mie_bits (RISCV_CSR_MIP_MTIP);
 {% endif -%}
 
   // Clear both mtime and mtimecmp to start afresh.
