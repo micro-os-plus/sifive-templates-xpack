@@ -37,9 +37,9 @@ os_startup_initialize_hardware_early (void)
 {
   // Disable all interrupts.
 {% if language == 'cpp' -%}
-  riscv::csr::clear_mstatus (MSTATUS_MIE);
+  riscv::csr::clear_mstatus (RISCV_CSR_MSTATUS_MIE);
 {% elsif language == 'c' -%}
-  riscv_csr_clear_mstatus (MSTATUS_MIE);
+  riscv_csr_clear_mstatus (RISCV_CSR_MSTATUS_MIE);
 {% endif -%}
   // Disable all individual interrupts.
 {% if language == 'cpp' -%}
@@ -109,9 +109,9 @@ os_startup_initialize_hardware (void)
 {% endif -%}
   // Disable M timer interrupt.
 {% if language == 'cpp' -%}
-  riscv::csr::clear_mie (MIP_MTIP);
+  riscv::csr::clear_mie (RISCV_CSR_MIP_MTIP);
 {% elsif language == 'c' -%}
-  riscv_csr_clear_mie (MIP_MTIP);
+  riscv_csr_clear_mie (RISCV_CSR_MIP_MTIP);
 {% endif -%}
 
   // Clear both mtime and mtimecmp to start afresh.
@@ -169,16 +169,16 @@ os_startup_initialize_hardware (void)
 
   // Enable M timer interrupt.
 {% if language == 'cpp' -%}
-  riscv::csr::set_mie (MIP_MTIP);
+  riscv::csr::set_mie (RISCV_CSR_MIP_MTIP);
 {% elsif language == 'c' -%}
-  riscv_csr_set_mie (MIP_MTIP);
+  riscv_csr_set_mie (RISCV_CSR_MIP_MTIP);
 {% endif -%}
 
   // Enable interrupts.
 {% if language == 'cpp' -%}
-  riscv::csr::set_mstatus (MSTATUS_MIE);
+  riscv::csr::set_mstatus (RISCV_CSR_MSTATUS_MIE);
 {% elsif language == 'c' -%}
-  riscv_csr_set_mstatus (MSTATUS_MIE);
+  riscv_csr_set_mstatus (RISCV_CSR_MSTATUS_MIE);
 {% endif -%}
 }
 
