@@ -31,13 +31,13 @@
 
 // ----------------------------------------------------------------------------
 
-sysclock::sysclock (void)
+os::sysclock::sysclock (void)
 {
   ;
 }
 
 void
-sysclock::sleep_for (duration_t duration)
+os::sysclock::sleep_for (duration_t duration)
 {
   // Compute the timestamp when the sleep should end.
   timestamp_t then = steady_now () + duration;
@@ -51,7 +51,10 @@ sysclock::sleep_for (duration_t duration)
 
 // ----------------------------------------------------------------------------
 
-// Instantiate a static system clock object.
-class sysclock sysclock;
+namespace os 
+{
+  // Instantiate a static system clock object.
+  class os::sysclock sysclock;
+}
 
 // ----------------------------------------------------------------------------

@@ -34,7 +34,7 @@
 void
 os_sysclock_construct (void)
 {
-  sysclock.steady_count_ = 0;
+  os_sysclock.steady_count_ = 0;
 }
 
 void
@@ -53,7 +53,7 @@ os_sysclock_sleep_for (os_clock_duration_t duration)
 // ----------------------------------------------------------------------------
 
 // Instantiate a static system clock object.
-os_clock_t sysclock;
+os_clock_t os_sysclock;
 
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wmissing-declarations"

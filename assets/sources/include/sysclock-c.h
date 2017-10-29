@@ -53,7 +53,7 @@ extern "C"
 
 #pragma GCC diagnostic pop
 
-  extern os_clock_t sysclock;
+  extern os_clock_t os_sysclock;
 
   /*
    * This code is a super simple version of the µOS++ clocks,
@@ -70,14 +70,14 @@ extern "C"
   __attribute__((always_inline))
   os_sysclock_internal_increment_count (void)
   {
-    ++sysclock.steady_count_;
+    ++os_sysclock.steady_count_;
   }
 
   static inline os_clock_timestamp_t
   __attribute__((always_inline))
   os_sysclock_steady_now (void)
   {
-    return sysclock.steady_count_;
+    return os_sysclock.steady_count_;
   }
 
   static inline os_clock_duration_t
