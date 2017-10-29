@@ -64,11 +64,11 @@ riscv_interrupt_local_handle_machine_timer (void)
 {
   // Disable M timer interrupt.
 {% if language == 'cpp' -%}
-  riscv::csr::clear_mie (RISCV_CSR_MIP_MTIP);
+  riscv::csr::clear_mie_bits (RISCV_CSR_MIP_MTIP);
 
   uint64_t tim = riscv::device::mtime ();
 {% elsif language == 'c' -%}
-  riscv_csr_clear_mie (RISCV_CSR_MIP_MTIP);
+  riscv_csr_clear_mie_bits (RISCV_CSR_MIP_MTIP);
 
   uint64_t tim = riscv_device_read_mtime ();
 {% endif -%}
@@ -117,9 +117,9 @@ riscv_interrupt_local_handle_machine_timer (void)
 
   // Enable M timer interrupt.
 {% if language == 'cpp' -%}
-  riscv::csr::set_mie (RISCV_CSR_MIP_MTIP);
+  riscv::csr::set_mie_bits (RISCV_CSR_MIP_MTIP);
 {% elsif language == 'c' -%}
-  riscv_csr_set_mie (RISCV_CSR_MIP_MTIP);
+  riscv_csr_set_mie_bits (RISCV_CSR_MIP_MTIP);
 {% endif -%}
 }
 
