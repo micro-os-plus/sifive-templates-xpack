@@ -130,11 +130,15 @@ extern bool button_released;
 {% if boardName == 'hifive1' -%}
 // The button is connected to GPIO18, active low.
 void
-riscv_interrupt_global_handle_gpio18 (void)
-{% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
+sifive_fe310_interrupt_global_handle_gpio18 (void)
+{% elsif boardName == 'e31arty' -%}
 // The button is connected to GPIO4, active high.
 void
-riscv_interrupt_global_handle_gpio4 (void)
+sifive_e31arty_interrupt_global_handle_gpio4 (void)
+{% elsif boardName == 'e51arty' -%}
+// The button is connected to GPIO4, active high.
+void
+sifive_e51arty_interrupt_global_handle_gpio4 (void)
 {% endif -%}
 {
   if (GPIO->riseip & (1 << BUTTON_0_OFFSET))
