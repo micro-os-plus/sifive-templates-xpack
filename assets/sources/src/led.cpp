@@ -59,11 +59,11 @@ led::turn_on ()
 {
   if (is_active_low_)
     {
-      gpio_ptr_->value &= ~bit_mask_;
+      gpio_ptr_->port &= ~bit_mask_;
     }
   else
     {
-      gpio_ptr_->value |= bit_mask_;
+      gpio_ptr_->port |= bit_mask_;
     }
 }
 
@@ -72,11 +72,11 @@ led::turn_off ()
 {
   if (is_active_low_)
     {
-      gpio_ptr_->value |= bit_mask_;
+      gpio_ptr_->port |= bit_mask_;
     }
   else
     {
-      gpio_ptr_->value &= ~bit_mask_;
+      gpio_ptr_->port &= ~bit_mask_;
     }
 }
 
