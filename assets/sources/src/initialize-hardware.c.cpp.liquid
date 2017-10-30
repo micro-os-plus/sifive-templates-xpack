@@ -62,9 +62,9 @@ os_startup_initialize_hardware_early (void)
   // Make sure the HFROSC is on before the next line:
   PRCI->hfrosccfg_bits.en = 1;
   // Run off 16 MHz Crystal for accuracy.
-  PRCI->pllcfg_bits.sel = 1;
+  PRCI->pllcfg_bits.refsel = 1;
   PRCI->pllcfg_bits.bypass = 1;
-  PRCI->pllcfg_bits.sel = 0;
+  PRCI->pllcfg_bits.sel = 1;
   // Turn off HFROSC to save power
   PRCI->hfrosccfg_bits.en = 0;
 
