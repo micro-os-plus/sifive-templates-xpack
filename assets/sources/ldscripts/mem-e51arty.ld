@@ -8,7 +8,7 @@
 MEMORY
 {
   FLASH (rxai!w) : ORIGIN = 0x40400000, LENGTH = 12M
-  RAM (wxa!ri) : ORIGIN = 0x80000000, LENGTH = 64K
+  RAM (wxa!ri) : ORIGIN = 0x80000000, LENGTH = 16K
 }
 
 /*
