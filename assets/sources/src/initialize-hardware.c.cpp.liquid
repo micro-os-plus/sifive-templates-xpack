@@ -72,8 +72,8 @@ os_startup_initialize_hardware_early (void)
 {% if boardName == 'e31arty' or  boardName == 'e51arty' -%}
   // For the Arty board, be sure LED1 is off, since it is very bright.
   PWM0->cmp_bits[1].value = 0xFF;
-  PWM0->cmp_bits[1].value = 0xFF;
-  PWM0->cmp_bits[1].value = 0xFF;
+  PWM0->cmp_bits[2].value = 0xFF;
+  PWM0->cmp_bits[3].value = 0xFF;
 
 {% endif -%}
   // TODO: check Arduino main.cpp for more/better initialisations.
