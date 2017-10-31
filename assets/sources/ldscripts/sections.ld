@@ -17,10 +17,10 @@
 OUTPUT_ARCH( "riscv" )
 
 /* 
- * The entry point is informative, for debuggers and simulators, the
+ * The entry point is important for debuggers and simulators, the
  * hardware has its own notion of the startup address.
  */
-ENTRY(_start)
+ENTRY(riscv_reset_entry)
 
 /*
  * The '__stack' definition is required by newlib crt0; do not remove it.
