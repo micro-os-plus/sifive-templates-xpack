@@ -44,147 +44,202 @@ using namespace os;
  * is all the developer must do, forwarding the interrupt to the handler
  * is automatically handled by the system.
  *
- * There are three types of handlers:
+ * There are two types of handlers, global and local:
  *
- * - `riscv_interrupt_local_handle_*`
- * - `riscv_interrupt_global_handle_*`
- * - `riscv_exception_handle_*`
+ * - `riscv_interrupt_handle_local_*`
+ * - `riscv_interrupt_handle_global_*`
  *
- * The definitions are part in the architecture package, part in the
- * device package.
+ * Some definitions are part of the architecture package, some are part 
+ * of the device package.
  *
- * The system provides weak defaults for all handlers; to help debugging
+ * The system provides weak defaults for all handlers; to help debugging,
  * these default handlers break to the debugger.
  */
 
 // ----------------------------------------------------------------------------
 
-void
-riscv_interrupt_local_handle_machine_timer (void)
+{% if language == 'cpp' -%}
+
+#if !defined(OS_USE_CPP_INTERRUPTS)
+#error "Define OS_USE_CPP_INTERRUPTS to use namespaces."
+#endif
+
+namespace riscv
 {
-  // Disable M timer interrupt.
-{% if language == 'cpp' -%}
-  riscv::csr::clear_mie_bits (RISCV_CSR_MIP_MTIP);
+  namespace interrupt
+  {
 
-  uint64_t tim = riscv::device::mtime ();
-{% elsif language == 'c' -%}
-  riscv_csr_clear_mie_bits (RISCV_CSR_MIP_MTIP);
-
-  uint64_t tim = riscv_device_read_mtime ();
+    void
+    handle_machine_timer (void)
+{% assign i = '    ' -%}
+{% else -%}
+void
+riscv_interrupt_handle_machine_timer (void)
+{% assign i = '' -%}
 {% endif -%}
-  uint64_t cmp;
-
-  // The simple method to compute mtimecmp by adding a value to the
-  // current mtime might not be accurate in case
-  // the sysclock frequency is not a divisor of RTC frequency,
-  // like 1000 Hz with a typical 32768 Hz RTC.
-  //
-  // A better way is to advance one or more ticks and recompute
-  // the comparator; this continuous computation should spread the error
-  // over time, to produce a fairly accurate clock. In the usual
-  // case the comparator will advance with either 32 or 33 ticks,
-  // uniformly distributed.
-  //
-  // The disadvantage is that it uses 64-bits operations, and might
-  // not produce accurate results at very high values.
-  // The variable duration will add an occasional jitter of the
-  // system clock, but this should not be a problem.
-  do
-    {
+{{ i }}{
+{{ i }}  // Disable M timer interrupt.
 {% if language == 'cpp' -%}
-      sysclock.internal_increment_count ();
-      cmp = sysclock.steady_now () * riscv::board::rtc_frequency_hz ()
-          / sysclock.frequency_hz;
+{{ i }}  riscv::csr::clear_mie_bits (RISCV_CSR_MIP_MTIP);
+
+{{ i }}  uint64_t tim = riscv::device::mtime ();
 {% elsif language == 'c' -%}
-      os_sysclock_internal_increment_count ();
-       cmp = os_sysclock_steady_now () * riscv_board_get_rtc_frequency_hz ()
-           / os_sysclock_get_frequency_hz ();
+{{ i }}  riscv_csr_clear_mie_bits (RISCV_CSR_MIP_MTIP);
+
+{{ i }}  uint64_t tim = riscv_device_read_mtime ();
 {% endif -%}
+{{ i }}  uint64_t cmp;
+
+{{ i }}  // The simple method to compute mtimecmp by adding a value to the
+{{ i }}  // current mtime might not be accurate in case
+{{ i }}  // the sysclock frequency is not a divisor of RTC frequency,
+{{ i }}  // like 1000 Hz with a typical 32768 Hz RTC.
+{{ i }}  //
+{{ i }}  // A better way is to advance one or more ticks and recompute
+{{ i }}  // the comparator; this continuous computation should spread the error
+{{ i }}  // over time, to produce a fairly accurate clock. In the usual
+{{ i }}  // case the comparator will advance with either 32 or 33 ticks,
+{{ i }}  // uniformly distributed.
+{{ i }}  //
+{{ i }}  // The disadvantage is that it uses 64-bits operations, and might
+{{ i }}  // not produce accurate results at very high values.
+{{ i }}  // The variable duration will add an occasional jitter of the
+{{ i }}  // system clock, but this should not be a problem.
+{{ i }}  do
+{{ i }}    {
+{% if language == 'cpp' -%}
+{{ i }}      sysclock.internal_increment_count ();
+{{ i }}      cmp = sysclock.steady_now () * riscv::board::rtc_frequency_hz ()
+{{ i }}          / sysclock.frequency_hz;
+{% elsif language == 'c' -%}
+{{ i }}      os_sysclock_internal_increment_count ();
+{{ i }}       cmp = os_sysclock_steady_now () * riscv_board_get_rtc_frequency_hz ()
+{{ i }}           / os_sysclock_get_frequency_hz ();
+{% endif -%}
+{{ i }}    }
+{{ i }}  while (cmp <= tim);
+
+{{ i }}  // The interrupt remains posted until it is cleared by writing
+{{ i }}  // the mtimecmp register.
+{% if language == 'cpp' -%}
+{{ i }}  riscv::device::mtimecmp (cmp);
+
+{{ i }}  // trace::putchar('.');
+{% elsif language == 'c' -%}
+{{ i }}  riscv_device_write_mtimecmp (cmp);
+
+{{ i }}  // trace_putchar('.');
+{% endif -%}
+
+{{ i }}  // Enable M timer interrupt.
+{% if language == 'cpp' -%}
+{{ i }}  riscv::csr::set_mie_bits (RISCV_CSR_MIP_MTIP);
+{% elsif language == 'c' -%}
+{{ i }}  riscv_csr_set_mie_bits (RISCV_CSR_MIP_MTIP);
+{% endif -%}
+{% if language == 'cpp' -%}
     }
-  while (cmp <= tim);
 
-  // The interrupt remains posted until it is cleared by writing
-  // the mtimecmp register.
-{% if language == 'cpp' -%}
-  riscv::device::mtimecmp (cmp);
-
-  // trace::putchar('.');
-{% elsif language == 'c' -%}
-  riscv_device_write_mtimecmp (cmp);
-
-  // trace_putchar('.');
-{% endif -%}
-
-  // Enable M timer interrupt.
-{% if language == 'cpp' -%}
-  riscv::csr::set_mie_bits (RISCV_CSR_MIP_MTIP);
-{% elsif language == 'c' -%}
-  riscv_csr_set_mie_bits (RISCV_CSR_MIP_MTIP);
-{% endif -%}
+  } /* namespace interrupt */
+} /* namespace riscv */
+{% else -%}
 }
+{% endif -%}
 
 {% if content == 'blinky' -%}
 extern bool button_pushed;
 extern bool button_released;
 
+{% if language == 'cpp' -%}
+namespace sifive
+{
+  namespace {{ deviceName }}
+  {
+    namespace interrupt
+    {
+
+{% if boardName == 'hifive1' -%}
+      // The button is connected to GPIO18, active low.
+      void
+      handle_global_gpio18 (void)
+{% elsif boardName == 'e31arty' -%}
+      // The button is connected to GPIO4, active high.
+      void
+      handle_global_gpio4 (void)
+{% elsif boardName == 'e51arty' -%}
+      // The button is connected to GPIO4, active high.
+      void
+      handle_global_gpio4 (void)
+{% endif -%}
+{% assign i = '      ' -%}
+{% else -%}
 {% if boardName == 'hifive1' -%}
 // The button is connected to GPIO18, active low.
 void
-sifive_interrupt_global_handle_gpio18 (void)
+sifive_interrupt_handle_global_gpio18 (void)
 {% elsif boardName == 'e31arty' -%}
 // The button is connected to GPIO4, active high.
 void
-sifive_interrupt_global_handle_gpio4 (void)
+sifive_interrupt_handle_global_gpio4 (void)
 {% elsif boardName == 'e51arty' -%}
 // The button is connected to GPIO4, active high.
 void
-sifive_interrupt_global_handle_gpio4 (void)
+sifive_interrupt_handle_global_gpio4 (void)
 {% endif -%}
-{
-  if (GPIO->riseip & (1 << BUTTON_0_OFFSET))
-    {
+{% assign i = '' -%}
+{% endif -%}
+
+{{ i }}{
+{{ i }}  if (GPIO->riseip & (1 << BUTTON_0_OFFSET))
+{{ i }}    {
 {% if boardName == 'hifive1' -%}
 {% if language == 'cpp' -%}
-      trace::putchar ('u');
+{{ i }}      trace::putchar ('u');
 {% elsif language == 'c' -%}
-      trace_putchar ('u');
+{{ i }}      trace_putchar ('u');
 {% endif -%}
-      button_released = true;
+{{ i }}      button_released = true;
 {% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
 {% if language == 'cpp' -%}
-      trace::putchar ('d');
+{{ i }}      trace::putchar ('d');
 {% elsif language == 'c' -%}
-      trace_putchar ('d');
+{{ i }}      trace_putchar ('d');
 {% endif -%}
-      button_pushed = true;
+{{ i }}      button_pushed = true;
 {% endif -%}
 
-      // Clear rising interrupt.
-      GPIO->riseip |= (1 << BUTTON_0_OFFSET);
-    }
+{{ i }}      // Clear rising interrupt.
+{{ i }}      GPIO->riseip |= (1 << BUTTON_0_OFFSET);
+{{ i }}    }
 
-  if (GPIO->fallip & (1 << BUTTON_0_OFFSET))
-    {
+{{ i }}  if (GPIO->fallip & (1 << BUTTON_0_OFFSET))
+{{ i }}    {
 {% if boardName == 'hifive1' -%}
 {% if language == 'cpp' -%}
-      trace::putchar ('d');
+{{ i }}      trace::putchar ('d');
 {% elsif language == 'c' -%}
-      trace_putchar ('d');
+{{ i }}      trace_putchar ('d');
 {% endif -%}
-      button_pushed = true;
+{{ i }}      button_pushed = true;
 {% elsif boardName == 'e31arty' or  boardName == 'e51arty' -%}
 {% if language == 'cpp' -%}
-      trace::putchar ('u');
+{{ i }}      trace::putchar ('u');
 {% elsif language == 'c' -%}
-      trace_putchar ('u');
+{{ i }}      trace_putchar ('u');
 {% endif -%}
-      button_released = true;
+{{ i }}      button_released = true;
 {% endif -%}
 
-      // Clear falling interrupt.
-      GPIO->fallip |= (1 << BUTTON_0_OFFSET);
-    }
-}
+{{ i }}      // Clear falling interrupt.
+{{ i }}      GPIO->fallip |= (1 << BUTTON_0_OFFSET);
+{{ i }}    }
+{{ i }}}
 
+{% if language == 'cpp' -%}
+    } /* namespace interrupt */
+  } /* namespace {{ deviceName }} */
+} /* namespace sifive */
+
+{% endif -%}
 {% endif -%}
 // ----------------------------------------------------------------------------
