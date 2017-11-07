@@ -126,6 +126,9 @@
                         "debug": {
                             "addSymbols": [
                                 "DEBUG"
+{% if language == 'cpp' -%}
+                                ,"OS_USE_CPP_INTERRUPTS"
+{% endif -%}
 {% if trace == 'uart0ftdi' -%}
                                 ,"OS_USE_TRACE_UART0"
 {% endif -%}
@@ -144,6 +147,9 @@
                         "release": {
                             "addSymbols": [
                                 "NDEBUG"
+{% if language == 'cpp' -%}
+                                ,"OS_USE_CPP_INTERRUPTS"
+{% endif -%}
                             ],
                             "addOptimizations": [
                                 "-Os"

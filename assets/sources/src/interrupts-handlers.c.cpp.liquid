@@ -176,15 +176,15 @@ namespace sifive
 {% if boardName == 'hifive1' -%}
 // The button is connected to GPIO18, active low.
 void
-sifive_interrupt_handle_global_gpio18 (void)
+sifive_{{ deviceName }}_interrupt_handle_global_gpio18 (void)
 {% elsif boardName == 'e31arty' -%}
 // The button is connected to GPIO4, active high.
 void
-sifive_interrupt_handle_global_gpio4 (void)
+sifive_{{ deviceName }}_interrupt_handle_global_gpio4 (void)
 {% elsif boardName == 'e51arty' -%}
 // The button is connected to GPIO4, active high.
 void
-sifive_interrupt_handle_global_gpio4 (void)
+sifive_{{ deviceName }}_interrupt_handle_global_gpio4 (void)
 {% endif -%}
 {% assign i = '' -%}
 {% endif -%}
