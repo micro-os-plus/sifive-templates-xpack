@@ -188,7 +188,6 @@ sifive_{{ deviceName }}_interrupt_handle_global_gpio4 (void)
 {% endif -%}
 {% assign i = '' -%}
 {% endif -%}
-
 {{ i }}{
 {{ i }}  if (GPIO->riseip & (1 << BUTTON_0_OFFSET))
 {{ i }}    {
