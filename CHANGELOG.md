@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v0.1.1 (2017-11-10)
+
+* interrupt-handlers.c.cpp.liquid: remove empty line
+
 ### v0.1.0 (2017-11-10)
 
 * switch toolchain to riscv-none-gcc
