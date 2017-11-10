@@ -2,6 +2,29 @@
 
 Changes in reverse chronological order.
 
+### v0.1.0 (2017-11-10)
+
+* switch toolchain to riscv-none-gcc
+* add preliminary local 'run test & test-all'; use nested loops over properties
+* fix interrupt handler names; use deviceName; use `OS_USE_CPP_INTERRUPTS`
+* rework interrupts to use namespaces
+* `interrupts-handlers*`: shorten prefix to `sifive_int*`
+* `src/initialize-hardware`: fix LED1 clear
+* `ldscripts/sections.ld`: ENTRY(riscv_reset_entry); to be sure debuggers/simulators properly set the stack
+* `mem-e[35]1arty.ld`: fix RAM size, 16 KB
+* `interrupts-handlers.c.cpp.liquid`: separate e31/e51; use the device specific interrupt name
+* `oocd.launch.liquid`: update scripts names; remove coreplex, shorten hifive1
+* initialize-hardware.c.cpp.liquid: fix PRCI inits
+* led.c.cpp: fix gpio port usage
+* liquid: deviceName e[35]1arty
+* assets: os::sysclock, os_sysclock
+* `include/*`: rename csr `set/clear_*_bits`
+* `src/initialize*` interrupts-*: use prefixed CSRs
+* move liquid below assets
+* liquid/ldscripts/sections.ld: simplify; no separate local arch & device arrays
+* update for `device-peripherals.h`; make `led-c.h` & `led-cpp.h` templates
+* rename bin/xpm-init-sifive-project.js
+
 ### v0.0.14 (2017-10-05)
 
 * main-liquid.c.cpp: remove c empty line
