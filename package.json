@@ -38,9 +38,9 @@
   },
   "homepage": "https://github.com/micro-os-plus/sifive-templates-xpack",
   "dependencies": {
-    "@sifive/arty-boards": "~0.1.0",
-    "@sifive/hifive1-board": "~0.1.0",
-    "@sifive/devices": "~0.1.0",
+    "@sifive/arty-boards": "~0.1.1",
+    "@sifive/hifive1-board": "~0.1.1",
+    "@sifive/devices": "~0.2.0",
     "@micro-os-plus/riscv-arch": "~0.1.0",
     "@micro-os-plus/startup": "~1.0.3",
     "@micro-os-plus/c-libs": "~1.0.2",
