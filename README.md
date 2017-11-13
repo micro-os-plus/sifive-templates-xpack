@@ -8,12 +8,10 @@ This section is intended for developers who plan to use this package to create p
 
 ### Easy install
 
-To be able to use the command line tool, this package can be installed globally from the `npm` registry.
-
-On GNU/Linux and macOS this looks like (on Windows `sudo` is not necessary):
+This package can be installed from the `npm` [registry](https://www.npmjs.com/package/@sifive/templates).
 
 ```console
-$ sudo npm install @sifive/templates --global
+$ xpm install @sifive/templates
 ```
 
 This package is also available from [GitHub](https://github.com/micro-os-plus/sifive-templates-xpack):
@@ -24,11 +22,27 @@ $ git clone https://github.com/micro-os-plus/sifive-templates-xpack.git sifive-t
 
 ### Prerequisites
 
-Installing from npm requires a recent [nodejs](https://nodejs.org) (>7.x); the 6.x LTS version is not compatible. 
+Installing from `npm` registry requires a recent [nodejs](https://nodejs.org) (>7.x); the 6.x LTS version is not compatible, and the `xpm` tool (https://www.npmjs.com/package/xpm).
+
+```console
+$ sudo npm install xpm --global
+```
+
+On Windows, global packages are installed in the user home folder, and do not require `sudo`.
+
 
 ## Command line usage
 
-The package includes an experimental tool `xpm-init-sifive-project` that can be used in command line environments to create projects.
+Instantiating the template will be done with a command like:
+
+```console
+$ xpm init --template @sifive/templates
+...
+```
+
+For the moment this functionality is not yet available from `xpm`.
+
+As a temporary solution, the package includes an experimental tool `xpm-init-sifive-project` that can be used in command line environments to create projects.
 
 The tool should be started in an empty folder, where the project will be generated.
 
@@ -37,6 +51,7 @@ There are two modes, interactive and scriptable.
 Starting the tool without any command line options will select the interactive mode, where the user can manually enter each choice.
 
 ```console
+$ sudo npm install  @sifive/templates --global
 $ mkdir -p /tmp/hifive1-blinky-cpp
 $ cd /tmp/hifive1-blinky-cpp
 $ xpm-init-sifive-project 
