@@ -146,7 +146,7 @@ $ xmake build -v -- clean all
 ### How to publish
 
 * commit all changes
-* update `CHANGELOG.md`; commit with a message like _prepare v0.1.2_
+* update `CHANGELOG.md`; commit with a message like _CHANGELOG: prepare v0.1.2_
 * `npm version patch`
 * push all changes to GitHub
 * `npm publish`
