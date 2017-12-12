@@ -60,20 +60,20 @@ os_startup_initialize_hardware_early (void)
 {% if deviceName == 'fe310' -%}
   // TODO: add to C/C++ API
   // Make sure the HFROSC is on before the next line:
-  PRCI->hfrosccfg_bits.en = 1;
+  PRCI->hfrosccfg |= SIFIVE_FE310_PRCI_HFROSCCFG_EN;
   // Run off 16 MHz Crystal for accuracy.
-  PRCI->pllcfg_bits.refsel = 1;
-  PRCI->pllcfg_bits.bypass = 1;
-  PRCI->pllcfg_bits.sel = 1;
+  PRCI->pllcfg |= (SIFIVE_FE310_PRCI_PLLCFG_REFSEL
+          | SIFIVE_FE310_PRCI_PLLCFG_BYPASS 
+          | SIFIVE_FE310_PRCI_PLLCFG_SEL);
   // Turn off HFROSC to save power
-  PRCI->hfrosccfg_bits.en = 0;
+  PRCI->hfrosccfg &= ~(SIFIVE_FE310_PRCI_HFROSCCFG_EN);
 
 {% endif -%}
 {% if boardName == 'e31arty' or  boardName == 'e51arty' -%}
   // For the Arty board, be sure LED1 is off, since it is very bright.
-  PWM0->cmp_bits[1].value = 0xFF;
-  PWM0->cmp_bits[2].value = 0xFF;
-  PWM0->cmp_bits[3].value = 0xFF;
+  PWM0->cmp[1] = 0xFF;
+  PWM0->cmp[2] = 0xFF;
+  PWM0->cmp[3] = 0xFF;
 
 {% endif -%}
   // TODO: check Arduino main.cpp for more/better initialisations.
