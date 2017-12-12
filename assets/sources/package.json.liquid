@@ -38,7 +38,24 @@
     }
   ],
   "license": "MIT",
-  "config": {},
+  "config": {
+    "xcdl": {
+      "device": {
+        "name": "{{ deviceName }}",
+        "supplier": {
+          "displayName": "SiFive",
+          "id": "1"
+        }
+      },
+      "board": {
+        "name": "{{ boardName }}",
+        "supplier": {
+          "displayName": "SiFive",
+          "id": "1"
+        }
+      }
+    }
+  },
   "dependencies": {},
   "devDependencies": {
     "xmake": "~0.3.5"
