@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### 2017-12-27
+
+* rename `id` in device & board
+
 ### v0.1.1 (2017-11-10)
 
 * interrupt-handlers.c.cpp.liquid: remove empty line
