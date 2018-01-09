@@ -160,6 +160,12 @@ $ xmake build -v -- clean all
 
 ### How to publish
 
+To check the last commits:
+
+```console
+$ git log --pretty='%cd * %h %s' --date=short
+```
+
 * commit all changes
 * update `CHANGELOG.md`; commit with a message like _CHANGELOG: prepare v0.1.2_
 * `npm version patch`
