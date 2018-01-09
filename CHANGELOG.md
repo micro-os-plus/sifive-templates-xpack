@@ -2,6 +2,14 @@
 
 Changes in reverse chronological order.
 
+### v0.2.0 2018-01-09 
+
+* README: add git log line
+
+### 2017-12-28 
+
+* README: fix sifive-hifive1.cfg reference
+
 ### 2017-12-27
 
 * rename `id` in device & board
