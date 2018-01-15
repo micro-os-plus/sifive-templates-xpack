@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### 2018-01-09
+
+* add dependence on @micro-os-plus/semihosting
+
 ### v0.2.0 2018-01-09 
 
 * README: add git log line

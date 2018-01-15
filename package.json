@@ -43,6 +43,7 @@
     "@sifive/devices": "~0.3.0",
     "@micro-os-plus/riscv-arch": "~0.2.0",
     "@micro-os-plus/startup": "~1.0.4",
+    "@micro-os-plus/semihosting": "~1.0.0",
     "@micro-os-plus/c-libs": "~1.0.3",
     "@micro-os-plus/cpp-libs": "~1.0.3",
     "@micro-os-plus/diag-trace": "~1.0.3",
