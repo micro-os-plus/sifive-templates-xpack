@@ -18,7 +18,11 @@
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.doSecondReset" value="false"/>
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.doStartGdbCLient" value="true"/>
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.doStartGdbServer" value="true"/>
+{% if trace == 'stdout' or trace == 'debug' or syscalls == 'semihosting' -%}
+<booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.enableSemihosting" value="true"/>
+{% else -%}
 <booleanAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.enableSemihosting" value="false"/>
+{% endif -%}
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.firstResetType" value="init"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbClientOtherCommands" value="set mem inaccessible-by-default off&#10;set arch riscv:rv{{ riscvXlen }}&#10;set remotetimeout 250"/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbClientOtherOptions" value=""/>

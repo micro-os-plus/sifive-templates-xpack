@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### 2018-01-21 
+
+* [#2] Automatically set openocd.enableSemihosting
+
 ### 2018-01-09
 
 * add dependence on @micro-os-plus/semihosting
