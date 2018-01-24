@@ -2,9 +2,20 @@
 
 Changes in reverse chronological order.
 
+### v1.0.0 2018-01-23
+
+* [#2] automatically set openocd.enableSemihosting
+* [#3] add J-Link debug launcher
+* [#4] main.liquid: add simple full semihosting test
+* README: update to mention semihosting
+
 ### 2018-01-21 
 
 * [#2] Automatically set openocd.enableSemihosting
+
+### 2018-01-15
+
+* [#1] depend on @micro-os-plus/semihosting
 
 ### 2018-01-09
 
