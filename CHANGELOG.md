@@ -2,7 +2,14 @@
 
 Changes in reverse chronological order.
 
-### v1.0.0 2018-01-23
+### v1.0.1 2018-01-24
+
+* add semihosting combinations to CLI generator
+* cli: render jlink.launch too
+* main.liquid: fix trace, all 288 combinations ok
+* package.json: add semihosting to 'run link'
+
+### v1.0.0 2018-01-24
 
 * [#2] automatically set openocd.enableSemihosting
 * [#3] add J-Link debug launcher
