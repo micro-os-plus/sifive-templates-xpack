@@ -1,3 +1,8 @@
+{% if language == 'cpp' -%}
+{% assign tpf = 'trace::printf' -%}
+{% elsif language == 'c' -%}
+{% assign tpf = 'trace_printf' -%}
+{% endif -%}
 /*
  * This file is part of the µOS++ distribution.
  *   (https://github.com/micro-os-plus)
@@ -39,6 +44,9 @@
 #include <stdio.h>
 {% if language == 'c' -%}
 #include <stdbool.h>
+{% endif -%}
+{% if syscalls == 'semihosting' -%}
+#include <string.h>
 {% endif -%}
 
 // ----------------------------------------------------------------------------
@@ -159,6 +167,45 @@ main (int argc, char* argv[])
 {% endif -%}
 
 {% endif -%}
+{% if syscalls == 'semihosting' -%}
+  if (argc > 2)
+    {
+      // Example how to write/read a file to/from the host.
+      // Usage should be no different than standard C/C++.
+      // Pass a file name as command line second argument.
+      int ret;
+
+      ret = remove(argv[2]);
+      {{ tpf }} ("remove()=%d\n", ret);
+
+      const char* buf = __DATE__ " " __TIME__;
+      size_t buf_len = strlen(buf);
+
+      FILE* fout = fopen(argv[2], "w");
+
+      size_t len = fwrite(buf, 1, buf_len, fout);
+      {{ tpf }} ("fwrite()=%u\n", len);
+
+      ret = fclose(fout);
+      {{ tpf }} ("fclose()=%d\n", ret);
+
+      FILE* fin = fopen(argv[2], "r");
+
+      char* buf_in = (char*)malloc(buf_len+1);
+      len = fread(buf_in, 1, buf_len, fin);
+      buf_in[len] = '\0';
+      {{ tpf }} ("fread()=%u\n", len);
+
+      ret = fclose(fin);
+      {{ tpf }} ("fclose()=%d\n", ret);
+
+      if (strncmp(buf, buf_in, buf_len) != 0) {
+          exit(1);
+      }
+      {{ tpf }} ("%s\n", buf_in);
+    }
+
+{% endif -%}
 {% if syscalls != 'none' -%}
   // Send a message to the standard output.
   puts ("Standard output message.");
@@ -190,6 +237,19 @@ main (int argc, char* argv[])
 {% endif -%}
     }
 
+{% if syscalls == 'semihosting' -%}
+  size_t max_loops = 0;
+  if (argc > 1)
+    {
+      size_t loops = (size_t)atoi (argv[1]);
+      max_loops = sizeof(blink_leds) / sizeof(blink_leds[0]);
+      if (loops > max_loops)
+        {
+          max_loops = loops;
+        }
+    }
+
+{% endif -%}
 {% endif -%}
 {% if trace != 'none' -%}
   uint32_t seconds = 0;
@@ -241,6 +301,9 @@ main (int argc, char* argv[])
 
 {% endif -%}
 {% if content == 'blinky' -%}
+{% if syscalls == 'semihosting' -%}
+  size_t loop = 0;
+{% endif -%}
   size_t count = 0;
 {% endif -%}
   // Loop forever, one second at a time.
@@ -295,6 +358,14 @@ main (int argc, char* argv[])
         {
           count = 0;
         }
+{% if syscalls == 'semihosting' -%}
+
+      ++loop;
+      if (max_loops > 0 && loop > max_loops)
+        {
+          exit (0);
+        }
+{% endif -%}
 {% elsif content == 'empty' -%}
 {% if language == 'cpp' -%}
       sysclock.sleep_for (sysclock.frequency_hz);
