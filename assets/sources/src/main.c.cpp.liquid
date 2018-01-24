@@ -46,6 +46,7 @@
 #include <stdbool.h>
 {% endif -%}
 {% if syscalls == 'semihosting' -%}
+#include <stdlib.h>
 #include <string.h>
 {% endif -%}
 
@@ -173,10 +174,15 @@ main (int argc, char* argv[])
       // Example how to write/read a file to/from the host.
       // Usage should be no different than standard C/C++.
       // Pass a file name as command line second argument.
+{% if trace != 'none' -%}
       int ret;
 
       ret = remove(argv[2]);
       {{ tpf }} ("remove()=%d\n", ret);
+{% else -%}
+
+      remove(argv[2]);
+{% endif -%}
 
       const char* buf = __DATE__ " " __TIME__;
       size_t buf_len = strlen(buf);
@@ -184,25 +190,39 @@ main (int argc, char* argv[])
       FILE* fout = fopen(argv[2], "w");
 
       size_t len = fwrite(buf, 1, buf_len, fout);
+{% if trace != 'none' -%}
       {{ tpf }} ("fwrite()=%u\n", len);
+{% endif -%}
 
+{% if trace != 'none' -%}
       ret = fclose(fout);
       {{ tpf }} ("fclose()=%d\n", ret);
+{% else -%}
+      fclose(fout);
+{% endif -%}
 
       FILE* fin = fopen(argv[2], "r");
 
       char* buf_in = (char*)malloc(buf_len+1);
       len = fread(buf_in, 1, buf_len, fin);
       buf_in[len] = '\0';
+{% if trace != 'none' -%}
       {{ tpf }} ("fread()=%u\n", len);
+{% endif -%}
 
+{% if trace != 'none' -%}
       ret = fclose(fin);
       {{ tpf }} ("fclose()=%d\n", ret);
+{% else -%}
+      fclose(fin);
+{% endif -%}
 
       if (strncmp(buf, buf_in, buf_len) != 0) {
           exit(1);
       }
+{% if trace != 'none' -%}
       {{ tpf }} ("%s\n", buf_in);
+{% endif -%}
     }
 
 {% endif -%}
