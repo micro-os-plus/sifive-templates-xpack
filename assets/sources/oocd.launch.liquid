@@ -32,7 +32,11 @@
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerLog" value=""/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerOther" value="{{ gdbServerOther }}"/>
 <intAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.gdbServerTelnetPortNumber" value="4444"/>
+{% if syscalls == 'semihosting' -%}
+<stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value="monitor arm semihosting_cmdline test 7 semihosting-test-file&#10;monitor arm semihosting_resexit enable"/>
+{% else -%}
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherInitCommands" value=""/>
+{% endif -%}
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.otherRunCommands" value=""/>
 <stringAttribute key="ilg.gnumcueclipse.debug.gdbjtag.openocd.secondResetType" value="halt"/>
 <stringAttribute key="org.eclipse.cdt.debug.gdbjtag.core.imageFileName" value=""/>
