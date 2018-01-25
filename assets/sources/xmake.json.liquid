@@ -131,6 +131,13 @@
 {% endif -%}
 {% if trace == 'uart0ftdi' -%}
                                 ,"OS_USE_TRACE_UART0"
+{% elsif trace == 'debug' -%}
+                                ,"OS_USE_TRACE_SEMIHOSTING_DEBUG"
+{% elsif trace == 'stdout' -%}
+                                ,"OS_USE_TRACE_SEMIHOSTING_STDOUT"
+{% endif -%}
+{% if syscalls == 'semihosting' -%}
+                                ,"OS_USE_SEMIHOSTING_SYSCALLS"
 {% endif -%}
 {% if trace != 'none' -%}
                                 ,"TRACE"
@@ -149,6 +156,9 @@
                                 "NDEBUG"
 {% if language == 'cpp' -%}
                                 ,"OS_USE_CPP_INTERRUPTS"
+{% endif -%}
+{% if syscalls == 'semihosting' -%}
+                                ,"OS_USE_SEMIHOSTING_SYSCALLS"
 {% endif -%}
                             ],
                             "addOptimizations": [
