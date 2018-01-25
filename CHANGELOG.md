@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.0.3 2018-01-24
+
+* xmake.json: update for semihosting
+
 ### v1.0.2 2018-01-24
 
 * update dependencies
