@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.0.2 2018-01-24
+
+* update dependencies
+
 ### v1.0.1 2018-01-24
 
 * add semihosting combinations to CLI generator
