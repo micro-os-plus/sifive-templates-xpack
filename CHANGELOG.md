@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.0.4 2018-04-15
+
+* add XpmInitTemplate class
+
 ### v1.0.3 2018-01-24
 
 * xmake.json: update for semihosting

@@ -38,11 +38,14 @@
  *
  * ```javascript
  * const Main = require('<module>').Main
+ * const XpmInitTemplate = require('<module>').XpmInitTemplate
  * ```
  */
 
 // ES6: `import { Main } from './lib/main.js'
 const Main = require('./lib/main.js').Main
+// ES6: `import { XpmInitTemplate } from './lib/template.js'
+const XpmInitTemplate = require('./lib/template.js').XpmInitTemplate
 
 // ----------------------------------------------------------------------------
 // Node.js specific export definitions.
@@ -51,10 +54,13 @@ const Main = require('./lib/main.js').Main
 // The Main class is added as a property with the same name to this object.
 
 module.exports.Main = Main
+module.exports.XpmInitTemplate = XpmInitTemplate
 
 // In ES6, it would be:
 // export class Main { ... }
+// export class XpmInitTemplate { ... }
 // ...
 // import { Main } from 'module.js'
+// import { XpmInitTemplate } from 'module.js'
 
 // ----------------------------------------------------------------------------
