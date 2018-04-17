@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.1.0 2018-04-15
+
+- bump deps; first fully functional from xpm
+
 ### v1.0.4 2018-04-15
 
 - add XpmInitTemplate class
