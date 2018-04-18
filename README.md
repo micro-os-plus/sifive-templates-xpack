@@ -73,7 +73,7 @@ File 'src/sysclock.cpp' copied.
 $ 
 ```
 
-For use in scripts, it is possible to pass all required data on the 
+When used in scripts, it is possible to pass all required data on the 
 command line. The only mandatory property is `boardName`, all other 
 have defaults.
 
