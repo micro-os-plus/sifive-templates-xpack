@@ -452,14 +452,14 @@ File 'src/sysclock.cpp' copied.
 ...
 ```
 
-
 ### Coverage tests
 
-TBD
+- none so far.
 
 ### Continuous Integration (CI)
 
-TBD
+The continuous integration tests are performed via 
+[Travis CI](https://travis-ci.org/micro-os-plus/sifive-templates-xpack).
 
 ### Standard compliance
 

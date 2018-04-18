@@ -39,6 +39,8 @@ notifications:
 cache:
   directories:
     - "node_modules"
+    - "/home/travis/opt/xPacks"
+    - "/home/travis/.caches/xPacks"
 
 # https://docs.travis-ci.com/user/customizing-the-build/#Safelisting-or-blocklisting-branches
 # branches:
