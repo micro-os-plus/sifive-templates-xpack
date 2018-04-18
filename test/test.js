@@ -145,9 +145,9 @@ class Test {
       xpmInit += ` --property ${key}=${value}`
     }
     shx.exec(xpmInit)
-
+    shx.echo()
     shx.exec('xpm install')
-
+    shx.echo()
     shx.exec('xpm run build')
 
     shx.config.silent = true
