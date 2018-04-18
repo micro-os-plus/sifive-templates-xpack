@@ -1,3 +1,10 @@
+[![npm (scoped)](https://img.shields.io/npm/v/@sifive/templates.svg)](https://www.npmjs.com/package/@sifive/templates) 
+[![license](https://img.shields.io/github/license/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/blob/xpack/LICENSE) 
+[![Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/)
+[![Travis](https://img.shields.io/travis/micro-os-plus/sifive-templates-xpack.svg?label=linux)](https://travis-ci.org/micro-os-plus/sifive-templates-xpack)
+[![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/issues)
+[![GitHub pulls](https://img.shields.io/github/issues-pr/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/pulls)
+
 ## Templates to generate SiFive Core Complex projects
 
 These are Liquid templates used to generate the projects for the SiFive 
