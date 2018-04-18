@@ -2,6 +2,12 @@
 
 Changes in reverse chronological order.
 
+### v1.2.0 2018-04-15
+
+- rework tests, functional on posix
+- package.json: cleanup "link" script
+- README: update user, developer, maintainer
+
 ### v1.1.0 2018-04-15
 
 - bump deps; first fully functional from xpm
