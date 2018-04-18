@@ -34,8 +34,20 @@
 
 // ----------------------------------------------------------------------------
 
-const properties = require('../lib/command.js').properties
+const path = require('path')
+
+// https://www.npmjs.com/package/shx
 const shx = require('shelljs')
+
+const properties = require('../lib/template.js').properties
+
+// ----------------------------------------------------------------------------
+
+const nodeBin = process.env.npm_node_execpath || process.env.NODE ||
+  process.execPath
+const executableRelativePath = '../bin/xpm-init-sifive-project.js'
+
+// ----------------------------------------------------------------------------
 
 class Test {
   static start () {
@@ -126,14 +138,17 @@ class Test {
     shx.pushd(buildFolder)
     shx.config.silent = false
 
-    // TODO: change to `xpm init --template` when available.
-    let xpmInit = 'xpm-init-sifive-project'
+    const executableAbsolutePath = path.join(__dirname, executableRelativePath)
+      .replace(/ /g, '\\ ')
+    let xpmInit = `${nodeBin} ${executableAbsolutePath}`
     for (const [key, value] of Object.entries(props)) {
       xpmInit += ` --property ${key}=${value}`
     }
     shx.exec(xpmInit)
 
-    shx.exec('npm run build')
+    shx.exec('xpm install')
+
+    shx.exec('xpm run build')
 
     shx.config.silent = true
     shx.popd()
