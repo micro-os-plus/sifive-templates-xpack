@@ -47,8 +47,8 @@ cache:
 
 # -----------------------------------------------------------------------------
 
-# before_install:
-#  - ...
+before_install:
+  - npm install --global xpm
 
 # install:
 #  - npm install
