@@ -7,8 +7,8 @@
 
 ## Templates to generate SiFive Core Complex projects
 
-These are Liquid templates used to generate the projects for the SiFive 
-Core Complex devices/boards.
+These are Liquid templates used to generate the projects for the **SiFive 
+Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
 
 ## How to use
 
