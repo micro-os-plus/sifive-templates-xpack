@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.2.2 2018-04-22
+
+- package.json.liquid: bump binary tools deps
+
 ### v1.2.1 2018-04-15
 
 - add .travis.yml
