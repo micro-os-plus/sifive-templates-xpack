@@ -7,8 +7,8 @@
 
 ## Templates to generate SiFive Core Complex projects
 
-These are Liquid templates used to generate the projects for the **SiFive 
-Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
+These are the Liquid templates used to generate the projects for the 
+**SiFive Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
 
 ## How to use
 
@@ -17,8 +17,11 @@ create projects for SiFive Core Complex.
 
 ### Prerequisites
 
-A recent [`xpm`](https://www.npmjs.com/package/xpm), which is a 
-portable [Node.js](https://nodejs.org/) command line application.
+The only requirement is a recent 
+`xpm`, which is a portable 
+[Node.js](https://nodejs.org) command line application. To install it,
+follow the instructions from the 
+[`xpm`](https://www.npmjs.com/package/xpm) page.
 
 ### Template instantiation
 
@@ -205,7 +208,7 @@ $ xpm run build
 
 ## Developer info
 
-### Git repo
+### The xPack git repo
 
 ```console
 $ git clone https://github.com/micro-os-plus/sifive-templates-xpack.git sifive-templates-xpack.git
@@ -524,5 +527,5 @@ $ git log --pretty='%cd * %h %s' --date=short
 ## License
 
 The original content is released under the 
-[MIT License](https://opensource.org/licenses/MIT), with all rights reserved to
-[Liviu Ionescu](https://github.com/ilg-ul).
+[MIT License](https://opensource.org/licenses/MIT), with all rights 
+reserved to [Liviu Ionescu](https://github.com/ilg-ul).
