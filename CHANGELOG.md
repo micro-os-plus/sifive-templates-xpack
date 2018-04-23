@@ -2,44 +2,48 @@
 
 Changes in reverse chronological order.
 
-### v1.2.2 2018-04-22
+### v1.2.3 (2018-04-22)
+
+- package.json.liquid: bump versions; since xpm 0.4.x no longer need the DLLs
+
+### v1.2.2 (2018-04-22)
 
 - package.json.liquid: bump binary tools deps
 
-### v1.2.1 2018-04-15
+### v1.2.1 (2018-04-15)
 
 - add .travis.yml
 
-### v1.2.0 2018-04-15
+### v1.2.0 (2018-04-15)
 
 - rework tests, functional on posix
 - package.json: cleanup "link" script
 - README: update user, developer, maintainer
 
-### v1.1.0 2018-04-15
+### v1.1.0 (2018-04-15)
 
 - bump deps; first fully functional from xpm
 
-### v1.0.4 2018-04-15
+### v1.0.4 (2018-04-15)
 
 - add XpmInitTemplate class
 
-### v1.0.3 2018-01-24
+### v1.0.3 (2018-01-24)
 
 - xmake.json: update for semihosting
 
-### v1.0.2 2018-01-24
+### v1.0.2 (2018-01-24)
 
 - update dependencies
 
-### v1.0.1 2018-01-24
+### v1.0.1 (2018-01-24)
 
 - add semihosting combinations to CLI generator
 - cli: render jlink.launch too
 - main.liquid: fix trace, all 288 combinations ok
 - package.json: add semihosting to 'run link'
 
-### v1.0.0 2018-01-24
+### v1.0.0 (2018-01-24)
 
 - [#2] automatically set openocd.enableSemihosting
 - [#3] add J-Link debug launcher
@@ -58,7 +62,7 @@ Changes in reverse chronological order.
 
 - add dependence on @micro-os-plus/semihosting
 
-### v0.2.0 2018-01-09 
+### v0.2.0 (2018-01-09)
 
 - README: add git log line
 
