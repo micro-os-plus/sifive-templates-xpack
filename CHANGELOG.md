@@ -2,6 +2,15 @@
 
 Changes in reverse chronological order.
 
+### v1.2.4 (2018-04-23)
+
+- add .appveyor.yml
+- test: fix names containing spaces
+- package.json: start test via explicit node
+- test/test.js: no need for \\ substitution
+- package.json: start test-all via node too
+- test/test.js: shorten project name; the resulting paths were too long for pre Windows 10
+
 ### v1.2.3 (2018-04-22)
 
 - package.json.liquid: bump versions; since xpm 0.4.x no longer need the DLLs
