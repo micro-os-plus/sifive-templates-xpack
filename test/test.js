@@ -140,7 +140,7 @@ class Test {
 
     const executableAbsolutePath = path.join(__dirname, executableRelativePath)
       .replace(/ /g, '\\ ')
-    let xpmInit = `${nodeBin} ${executableAbsolutePath}`
+    let xpmInit = `"${nodeBin}" "${executableAbsolutePath}"`
     for (const [key, value] of Object.entries(props)) {
       xpmInit += ` --property ${key}=${value}`
     }
