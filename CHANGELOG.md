@@ -2,6 +2,10 @@
 
 Changes in reverse chronological order.
 
+### v1.2.5 (2018-04-25)
+
+- package.json.liquid: add reference to @micro-os-plus/semihosting
+
 ### v1.2.4 (2018-04-23)
 
 - add .appveyor.yml
