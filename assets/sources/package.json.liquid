@@ -58,6 +58,9 @@
   },
   "dependencies": {
       "@micro-os-plus/diag-trace": "~1.0.6"
+{% if syscalls == 'semihosting' -%}
+      ,"@micro-os-plus/semihosting": "~2.0.2"
+{% endif -%}
 {% if boardName == 'hifive1' -%}
       ,"@sifive/hifive1-board": "~1.0.3"
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
