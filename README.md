@@ -10,6 +10,13 @@
 These are the Liquid templates used to generate the projects for the 
 **SiFive Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
 
+The package is both an xPack (used by `xpm`) and a Node.js module (for 
+running tests).
+
+`@sifive/templates` is an open source project, hosted as
+[micro-os-plus/sifive-templates-xpack](https://github.com/micro-os-plus/sifive-templates-xpack)
+on GitHub.
+
 ## How to use
 
 This section is intended for developers who plan to use this package to 
