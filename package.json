@@ -45,7 +45,8 @@
     "readline-sync": "~1.4.7"
   },
   "devDependencies": {
-    "standard": "~10.0.3"
+    "standard": "~10.0.3",
+    "xpm": "~0.4.5"
   },
   "peerDependencies": {},
   "bundledDependencies": [],

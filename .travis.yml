@@ -50,8 +50,8 @@ branches:
 
 # -----------------------------------------------------------------------------
 
-before_install:
-  - npm install --global xpm
+# before_install:
+#  - ...
 
 # install:
 #  - npm install

@@ -17,8 +17,8 @@ skip_tags: true
 install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
-  - npm install --global xpm
-  # install modules
+  # - npm install --global xpm
+  # Install devDependencies, including xpm. 
   - npm install
 
 # Post-install test scripts.
@@ -26,7 +26,7 @@ test_script:
   # Output useful info for debugging.
   - node --version
   - npm --version
-  # run tests
+  # Run test.
   - npm test
 
 # Don't actually build.
