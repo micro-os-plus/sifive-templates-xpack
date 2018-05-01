@@ -144,11 +144,18 @@ class Test {
     for (const [key, value] of Object.entries(props)) {
       xpmInit += ` --property ${key}=${value}`
     }
+    // shx.echo(`$ ${xpmInit}`)
     shx.exec(xpmInit)
+
     shx.echo()
-    shx.exec('xpm install')
+    let cmd = 'xpm install'
+    shx.echo(`$ ${cmd}`)
+    shx.exec(cmd)
+
     shx.echo()
-    shx.exec('xpm run build')
+    cmd = 'xpm run build'
+    shx.echo(`$ ${cmd}`)
+    shx.exec(cmd)
 
     shx.config.silent = true
     shx.popd()
