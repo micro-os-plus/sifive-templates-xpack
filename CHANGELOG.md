@@ -2,6 +2,16 @@
 
 Changes in reverse chronological order.
 
+The latest public version is [@sifive/templates](https://www.npmjs.com/package/@sifive/templates).
+
+Don't forget to close GitHub [issues](https://github.com/micro-os-plus/sifive-templates-xpack/issues).
+
+### v1.2.6 (2018-05-01)
+
+- test/test.js: show command to run
+- README: intro to explain dual nature, xpack/module
+- add devDependency to xpm; update travis & appVeyor
+
 ### v1.2.5 (2018-04-25)
 
 - package.json.liquid: add reference to @micro-os-plus/semihosting
