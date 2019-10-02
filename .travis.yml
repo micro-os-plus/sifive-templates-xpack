@@ -40,7 +40,7 @@ cache:
   directories:
     - "node_modules"
     - "/home/travis/opt/xPacks"
-    - "/home/travis/.caches/xPacks"
+    - "/home/travis/.cache/xPacks"
 
 # https://docs.travis-ci.com/user/customizing-the-build/#Safelisting-or-blocklisting-branches
 # Filter out commits with tags.
