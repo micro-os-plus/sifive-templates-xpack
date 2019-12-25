@@ -36,6 +36,8 @@ Instantiating the template can be done via the `xpm init` command,
 pointing to this xPack:
 
 ```console
+$ mkdir -p my-project
+$ cd my-project
 $ xpm init --template @sifive/templates
 ```
 
