@@ -29,7 +29,7 @@
   "author": {
     "name": "Liviu Ionescu",
     "email": "ilg@livius.net",
-    "url": "http://liviusdotnet.wordpress.com"
+    "url": "https://github.com/ilg-ul"
   },
   "contributors": [],
   "license": "MIT",
@@ -40,13 +40,13 @@
   "dependencies": {
     "@ilg/es6-promisifier": "~0.1.9",
     "@ilg/cli-start-options": "~0.4.0",
-    "liquidjs": "~1.9.6",
-    "readline-sync": "~1.4.7",
-    "shelljs": "~0.7.8"
+    "liquidjs": "~9.15.0",
+    "readline-sync": "~1.4.10",
+    "shelljs": "~0.8.4"
   },
   "devDependencies": {
-    "standard": "~10.0.3",
-    "xpm": "~0.4.5"
+    "standard": "~14.3.4",
+    "xpm": "~0.6.7"
   },
   "peerDependencies": {},
   "bundledDependencies": [],
