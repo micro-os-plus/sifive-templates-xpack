@@ -1,6 +1,6 @@
 {
   "name": "{{ projectName }}",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "An xPack with a {{ content }} application running on {{ boardDescription }}",
   "main": "",
   "scripts": {
@@ -34,7 +34,7 @@
     {
       "name": "Liviu Ionescu",
       "email": "ilg@livius.net",
-      "url": "http://liviusdotnet.wordpress.com"
+      "url": "https://github.com/ilg-ul"
     }
   ],
   "license": "MIT",
@@ -57,21 +57,21 @@
     }
   },
   "dependencies": {
-      "@micro-os-plus/diag-trace": "~1.0.6"
+      "@micro-os-plus/diag-trace": "~1.0.7"
 {% if syscalls == 'semihosting' -%}
       ,"@micro-os-plus/semihosting": "~2.0.2"
 {% endif -%}
 {% if boardName == 'hifive1' -%}
-      ,"@sifive/hifive1-board": "~1.0.3"
+      ,"@sifive/hifive1-board": "~1.0.4"
 {% elsif boardName == 'e31arty' or boardName == 'e51arty' -%}
-      ,"@sifive/arty-boards": "~1.0.2"
+      ,"@sifive/arty-boards": "~1.0.3"
 {% endif -%}
   },
   "devDependencies": {
     "xmake": "~0.3.10",
-    "@gnu-mcu-eclipse/riscv-none-gcc": "~7.2.0-2.4",
-    "@gnu-mcu-eclipse/openocd": "~0.10.0-7.4",
-    "@gnu-mcu-eclipse/windows-build-tools": "~2.10.1-4"
+    "@xpack-dev-tools/riscv-none-embed-gcc": "8.3.0-1.2.1",
+    "@xpack-dev-tools/openocd": "0.10.0-14.3",
+    "@xpack-dev-tools/windows-build-tools": "2.12.2-1"
   },
   "xpack": {}
 }
