@@ -41,8 +41,8 @@
     "@ilg/es6-promisifier": "~0.1.9",
     "@ilg/cli-start-options": "~0.4.0",
     "liquidjs": "~1.9.6",
-    "shelljs": "~0.7.8",
-    "readline-sync": "~1.4.7"
+    "readline-sync": "~1.4.7",
+    "shelljs": "~0.7.8"
   },
   "devDependencies": {
     "standard": "~10.0.3",
