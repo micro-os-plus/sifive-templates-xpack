@@ -139,7 +139,7 @@ class Test {
     shx.config.silent = false
 
     const executableAbsolutePath = path.join(__dirname, executableRelativePath)
-      
+
     let xpmInit = `"${nodeBin}" "${executableAbsolutePath}" --name ${cnt}`
     for (const [key, value] of Object.entries(props)) {
       xpmInit += ` --property ${key}=${value}`
