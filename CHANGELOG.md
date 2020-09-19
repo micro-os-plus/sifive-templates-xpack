@@ -6,6 +6,10 @@ The latest public version is [@sifive/templates](https://www.npmjs.com/package/@
 
 Don't forget to close GitHub [issues](https://github.com/micro-os-plus/sifive-templates-xpack/issues).
 
+### v1.2.8 (2020-09-19)
+
+- package.json.liquid: bump windows-build-tools to 2.12.2-2
+
 ### v1.2.7 (2020-09-19)
 
 - [#6] create the -C folder
