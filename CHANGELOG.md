@@ -6,6 +6,14 @@ The latest public version is [@sifive/templates](https://www.npmjs.com/package/@
 
 Don't forget to close GitHub [issues](https://github.com/micro-os-plus/sifive-templates-xpack/issues).
 
+### v1.2.7 (2020-09-19)
+
+- [#6] create the -C folder
+- README.md.liquid: update fro Embedded CDT & xPack
+- package.json.liquid: start with 0.0.1, bump deps
+- template.js: update for new Liquid object engine
+- xmake.json/build: remove -Wabi
+
 ### v1.2.6 (2018-05-01)
 
 - test/test.js: show command to run
