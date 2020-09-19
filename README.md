@@ -1,5 +1,5 @@
-[![npm (scoped)](https://img.shields.io/npm/v/@sifive/templates.svg)](https://www.npmjs.com/package/@sifive/templates) 
-[![license](https://img.shields.io/github/license/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/blob/xpack/LICENSE) 
+[![npm (scoped)](https://img.shields.io/npm/v/@sifive/templates.svg)](https://www.npmjs.com/package/@sifive/templates)
+[![license](https://img.shields.io/github/license/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/blob/xpack/LICENSE)
 [![Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/)
 [![Travis](https://img.shields.io/travis/micro-os-plus/sifive-templates-xpack.svg?label=linux)](https://travis-ci.org/micro-os-plus/sifive-templates-xpack)
 [![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/issues)
@@ -7,10 +7,10 @@
 
 ## Templates to generate SiFive Core Complex projects
 
-These are the Liquid templates used to generate the projects for the 
+These are the Liquid templates used to generate the projects for the
 **SiFive Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
 
-The package is both an xPack (used by `xpm`) and a Node.js module (for 
+The package is both an xPack (used by `xpm`) and a Node.js module (for
 running tests).
 
 `@sifive/templates` is an open source project, hosted as
@@ -19,16 +19,16 @@ on GitHub.
 
 ## How to use
 
-This section is intended for developers who plan to use this package to 
+This section is intended for developers who plan to use this package to
 create projects for SiFive Core Complex.
 
 ### Prerequisites
 
-The only requirement is a recent 
-`xpm`, which is a portable 
+The only requirement is a recent
+`xpm`, which is a portable
 [Node.js](https://nodejs.org) command line application. To install it,
-follow the instructions from the 
-[`xpm`](https://www.npmjs.com/package/xpm) page.
+follow the instructions from the
+[`xpm`](https://xpack.github.io/xpm/) page.
 
 ### Template instantiation
 
@@ -41,7 +41,7 @@ $ cd my-project
 $ xpm init --template @sifive/templates
 ```
 
-This command must be invoked in an empty folder, where the project 
+This command must be invoked in an empty folder, where the project
 will be generated.
 
 There are two modes, interactive and non interactive (from a script).
@@ -53,21 +53,21 @@ interactive mode and the user can manually enter each choice.
 $ rm -rf /tmp/hifive1-blinky-cpp
 $ mkdir -p /tmp/hifive1-blinky-cpp
 $ cd /tmp/hifive1-blinky-cpp
-$ xpm init --template @sifive/templates 
+$ xpm init --template @sifive/templates
 xPack manager - create an xPack, empty or from a template
 
 Processing @sifive/templates@1.0.4...
 
-Programming language? (c, cpp, ?) [cpp]: 
-Board? (hifive1, e31arty, e51arty, ?) [hifive1]: 
-Content? (empty, blinky, ?) [blinky]: 
-Use system calls? (none, retarget, semihosting, ?) [retarget]: 
-Trace output? (none, uart0ftdi, stdout, debug, ?) [uart0ftdi]: 
-Check some warnings? (true, false, ?) [true]: 
-Check most warnings? (true, false, ?) [false]: 
-Enable -Werror? (true, false, ?) [false]: 
-Use -Og on debug? (true, false, ?) [false]: 
-Use newlib nano? (true, false, ?) [true]: 
+Programming language? (c, cpp, ?) [cpp]:
+Board? (hifive1, e31arty, e51arty, ?) [hifive1]:
+Content? (empty, blinky, ?) [blinky]:
+Use system calls? (none, retarget, semihosting, ?) [retarget]:
+Trace output? (none, uart0ftdi, stdout, debug, ?) [uart0ftdi]:
+Check some warnings? (true, false, ?) [true]:
+Check most warnings? (true, false, ?) [false]:
+Enable -Werror? (true, false, ?) [false]:
+Use -Og on debug? (true, false, ?) [false]:
+Use newlib nano? (true, false, ?) [true]:
 
 Creating the C++ project 'hifive1-blinky-cpp'...
 File 'LICENSE' generated.
@@ -89,11 +89,11 @@ File 'src/newlib-syscalls.c' copied.
 File 'src/sysclock.cpp' copied.
 
 'xpm init' completed in 77 ms.
-$ 
+$
 ```
 
-When used in scripts, it is possible to pass all required data on the 
-command line. The only mandatory property is `boardName`, all other 
+When used in scripts, it is possible to pass all required data on the
+command line. The only mandatory property is `boardName`, all other
 have defaults.
 
 ```console
@@ -138,7 +138,7 @@ $
 
 ### Satisfy dependencies
 
-The next step is to install all packages required, either source packages or 
+The next step is to install all packages required, either source packages or
 binary tools.
 
 This is done by issuing the `xpm install` command in the project folder:
@@ -198,17 +198,17 @@ $
 
 ### Build
 
-The generated projects include some additional metadata that can be used 
+The generated projects include some additional metadata that can be used
 to automatically create a build configuration.
 
-For example, this metadata can be directly consumed by 
-[`xmake`](https://www.npmjs.com/package/xmake), to 
-generate `make` files. 
+For example, this metadata can be directly consumed by
+[`xmake`](https://www.npmjs.com/package/xmake), to
+generate `make` files.
 
-Based on the xPack `devDependencies`, the toolchain and all other tools 
-are automatically installed and 
-their locations are automatically added to the internal path, so 
-none of the tools need to be in the global path. 
+Based on the xPack `devDependencies`, the toolchain and all other tools
+are automatically installed and
+their locations are automatically added to the internal path, so
+none of the tools need to be in the global path.
 
 ```console
 $ cd /tmp/hifive1-blinky-cpp
@@ -227,13 +227,13 @@ $ npm install
 
 ### Tests
 
-Given the large number of configuration properties, there may be 
-more than 200 different projects. 
+Given the large number of configuration properties, there may be
+more than 200 different projects.
 
 The tests address generating and building either a selection of
 these projects, or all of them.
 
-As for any `npm` package, the standard way to run the project tests is 
+As for any `npm` package, the standard way to run the project tests is
 via `npm run test`:
 
 ```console
@@ -477,14 +477,14 @@ File 'src/sysclock.cpp' copied.
 
 ### Continuous Integration (CI)
 
-The continuous integration tests are performed via 
+The continuous integration tests are performed via
 [Travis CI](https://travis-ci.org/micro-os-plus/sifive-templates-xpack).
 
 ### Standard compliance
 
 The module uses ECMAScript 6 class definitions.
 
-As style, it uses the [JavaScript Standard Style](https://standardjs.com/), 
+As style, it uses the [JavaScript Standard Style](https://standardjs.com/),
 automatically checked at each commit via Travis CI.
 
 Known and accepted exceptions:
@@ -505,7 +505,7 @@ $
 
 The documentation metadata follows the [JSdoc](http://usejsdoc.org) tags.
 
-To enforce checking at file level, add the following comments right after 
+To enforce checking at file level, add the following comments right after
 the `use strict`:
 
 ```js
@@ -514,7 +514,7 @@ the `use strict`:
 /* eslint max-len: [ "error", 80, { "ignoreUrls": true } ] */
 ```
 
-Note: be sure C style comments are used, C++ styles are not parsed by 
+Note: be sure C style comments are used, C++ styles are not parsed by
 [ESLint](http://eslint.org).
 
 ## Maintainer info
@@ -535,6 +535,6 @@ $ git log --pretty='%cd * %h %s' --date=short
 
 ## License
 
-The original content is released under the 
-[MIT License](https://opensource.org/licenses/MIT), with all rights 
+The original content is released under the
+[MIT License](https://opensource.org/licenses/MIT), with all rights
 reserved to [Liviu Ionescu](https://github.com/ilg-ul).
