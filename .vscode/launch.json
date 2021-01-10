@@ -1,0 +1,175 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init --help",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+              "--help"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init --help -dd",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+              "--help",
+              "-dd"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init -dd",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+              "-dd"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init -dd -C /tmp/xgen",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+              "-dd",
+              "-C",
+              "/tmp/xgen/123"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "integratedTerminal",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "xpm-init -dd --property boardName=hifive1",
+            "program": "${workspaceRoot}/bin/xpm-init-sifive-project.js",
+            "stopOnEntry": true,
+            "args": [
+              "-dd",
+              "-C",
+              "/tmp/xgen/e51-arty-123",
+              "--property",
+              "boardName=hifive1"
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "skipFiles": [
+              "async_hooks.js",
+              "inspector_async_hook.js"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "test",
+            "program": "${workspaceRoot}/test/test.js",
+            "stopOnEntry": true,
+            "args": [
+            ],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+              "--nolazy"
+            ],
+            "skipFiles": [
+              "async_hooks.js",
+              "inspector_async_hook.js"
+            ],
+            "env": {
+              "NODE_ENV": "development"
+            },
+            "console": "internalConsole",
+            "sourceMaps": false
+          },
+          {
+            "type": "node",
+            "request": "launch",
+            "name": "Launch Program",
+            "program": "${workspaceRoot}/index.js"
+          }
+    ]
+}
