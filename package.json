@@ -3,23 +3,23 @@
   "version": "1.2.9",
   "description": "A source xPack / npm package with templates to generate SiFive Core Complex projects",
   "main": "./index.js",
-  "directories": {
-    "bin": "./bin",
-    "lib": "./lib",
-    "test": "./test"
-  },
   "bin": {
     "xpm-init-sifive-project": "./bin/xpm-init-sifive-project.js"
   },
   "scripts": {
-    "test": "node ./test/test.js",
-    "test-all": "node ./test/test.js all",
     "fix": "standard --fix",
+    "test": "node ./test/test.js",
+    "git-log": "git log --pretty='%cd * %h %s' --date=short",
+    "outdated": "npm outdated",
+    "pack": "npm pack",
+    "version-patch": "npm version patch",
+    "version-minor": "npm version minor",
+    "npm-install": "npm install",
     "link": "npm link @ilg/cli-start-options; npm link @ilg/es6-promisifier"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/micro-os-plus/sifive-templates-xpack.git"
+    "url": "https://github.com/micro-os-plus/sifive-templates-xpack.git"
   },
   "keywords": [
     "c++",
@@ -34,22 +34,27 @@
   "contributors": [],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/micro-os-plus/sifive-templates-xpack/issues"
+    "url": "https://github.com/micro-os-plus/sifive-templates-xpack/issues/"
   },
-  "homepage": "https://github.com/micro-os-plus/sifive-templates-xpack",
+  "homepage": "https://github.com/micro-os-plus/sifive-templates-xpack/",
   "dependencies": {
-    "@ilg/es6-promisifier": "~0.1.9",
-    "@ilg/cli-start-options": "~0.4.0",
-    "liquidjs": "~9.15.0",
+    "@ilg/es6-promisifier": "~0.3.1",
+    "@ilg/cli-start-options": "~0.6.6",
+    "liquidjs": "~9.37.0",
     "readline-sync": "~1.4.10",
-    "shelljs": "~0.8.4"
+    "shelljs": "~0.8.5"
   },
+  "bundledDependencies": [
+    "@ilg/es6-promisifier",
+    "@ilg/cli-start-options",
+    "liquidjs",
+    "readline-sync",
+    "shelljs"
+  ],
   "devDependencies": {
-    "standard": "~14.3.4",
-    "xpm": "~0.6.7"
+    "standard": "~17.0.0",
+    "xpm": "~0.13.3"
   },
-  "peerDependencies": {},
-  "bundledDependencies": [],
   "optionalDependencies": {},
   "config": {},
   "xpack": {}
