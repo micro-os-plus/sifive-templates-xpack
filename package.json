@@ -1,6 +1,6 @@
 {
   "name": "@sifive/templates",
-  "version": "1.2.9",
+  "version": "1.2.10",
   "description": "A source xPack / npm package with templates to generate SiFive Core Complex projects",
   "main": "./index.js",
   "bin": {
