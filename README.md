@@ -1,7 +1,7 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@sifive/templates.svg)](https://www.npmjs.com/package/@sifive/templates)
 [![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/sifive/templates-xpack)](https://github.com/sifive/templates-xpack)
 [![license](https://img.shields.io/github/license/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/blob/xpack/LICENSE)
-[![CI on Push](https://github.com/sifive/templates-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/sifive/templates-xpack/actions/workflows/CI.yml)
+[![CI on Push](https://github.com/micro-os-plus/sifive-templates-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/actions/workflows/CI.yml)
 
 ## A source xPack with a template to generate SiFive Core Complex projects
 
@@ -47,12 +47,12 @@ Starting the tool without any command line options will select the
 interactive mode and the user can manually enter each choice.
 
 ```console
-$ rm -rf /tmp/hifive1-blinky-cpp
-$ mkdir -p /tmp/hifive1-blinky-cpp && cd /tmp/hifive1-blinky-cpp
+$ rm -rf ~/tmp/hifive1-blinky-cpp
+$ mkdir -p ~/tmp/hifive1-blinky-cpp && cd ~/tmp/hifive1-blinky-cpp
 $ xpm init --template @sifive/templates
-xPack manager - create an xPack, empty or from a template
 
-Processing @sifive/templates@1.0.4...
+Checking package @sifive/templates@next metadata...
+Processing @sifive/templates@1.2.10...
 
 Programming language? (c, cpp, ?) [cpp]:
 Board? (hifive1, e31arty, e51arty, ?) [hifive1]:
@@ -64,7 +64,6 @@ Check most warnings? (true, false, ?) [false]:
 Enable -Werror? (true, false, ?) [false]:
 Use -Og on debug? (true, false, ?) [false]:
 Use newlib nano? (true, false, ?) [true]:
-
 Creating the C++ project 'hifive1-blinky-cpp'...
 File 'LICENSE' generated.
 File 'oocd.launch' generated.
@@ -83,8 +82,6 @@ File 'src/led.cpp' copied.
 File 'src/main.cpp' generated.
 File 'src/newlib-syscalls.c' copied.
 File 'src/sysclock.cpp' copied.
-
-'xpm init' completed in 77 ms.
 $
 ```
 
@@ -93,11 +90,12 @@ command line. The only mandatory property is `boardName`, all other
 have defaults.
 
 ```console
-$ cd /tmp/hifive1-blinky-cpp
+$ rm -rf ~/tmp/hifive1-blinky-cpp
+$ mkdir -p ~/tmp/hifive1-blinky-cpp && cd ~/tmp/hifive1-blinky-cpp
 $ xpm init --template @sifive/templates --property boardName=hifive1
-xPack manager - create an xPack, empty or from a template
 
-Processing @sifive/templates@1.0.4...
+Checking package @sifive/templates@next metadata...
+Processing @sifive/templates@1.2.10...
 
 Creating the C++ project 'hifive1-blinky-cpp'...
 - boardName=hifive1
@@ -127,8 +125,6 @@ File 'src/led.cpp' copied.
 File 'src/main.cpp' generated.
 File 'src/newlib-syscalls.c' copied.
 File 'src/sysclock.cpp' copied.
-
-'xpm init' completed in 1.144 sec.
 $
 ```
 
@@ -140,55 +136,60 @@ binary tools.
 This is done by issuing the `xpm install` command in the project folder:
 
 ```console
-$ cd /tmp/hifive1-blinky-cpp
+$ cd ~/tmp/hifive1-blinky-cpp
 $ xpm install
-xPack manager - install package(s)
-
-Installing dependencies for 'hifive1-blinky-cpp'...
-Folder 'micro-os-plus-diag-trace' linked to '@micro-os-plus/diag-trace/1.0.6'.
-Folder 'sifive-hifive1-board' linked to '@sifive/hifive1-board/1.0.3'.
-Folder 'sifive-devices' linked to '@sifive/devices/1.0.2'.
-Folder 'micro-os-plus-riscv-arch' linked to '@micro-os-plus/riscv-arch/1.0.2'.
-Folder 'micro-os-plus-startup' linked to '@micro-os-plus/startup/1.0.7'.
-Folder 'micro-os-plus-c-libs' linked to '@micro-os-plus/c-libs/1.0.6'.
-Folder 'micro-os-plus-cpp-libs' linked to '@micro-os-plus/cpp-libs/1.0.4'.
-Folder 'xmake' linked to 'xmake/0.3.8'.
-File 'xmake' linked to 'xmake/bin/xmake.js'
-Folder 'gnu-mcu-eclipse-riscv-none-gcc' linked to '@gnu-mcu-eclipse/riscv-none-gcc/7.2.0-2.1'.
-File 'riscv-none-embed-addr2line' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-addr2line'
-File 'riscv-none-embed-ar' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-ar'
-File 'riscv-none-embed-as' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-as'
-File 'riscv-none-embed-c++' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-c++'
-File 'riscv-none-embed-c++filt' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-c++filt'
-File 'riscv-none-embed-cpp' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-cpp'
-File 'riscv-none-embed-elfedit' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-elfedit'
-File 'riscv-none-embed-g++' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-g++'
-File 'riscv-none-embed-gcc' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcc'
-File 'riscv-none-embed-gcc-7.2.0' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcc-7.2.0'
-File 'riscv-none-embed-gcc-ar' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcc-ar'
-File 'riscv-none-embed-gcc-nm' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcc-nm'
-File 'riscv-none-embed-gcc-ranlib' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcc-ranlib'
-File 'riscv-none-embed-gcov' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcov'
-File 'riscv-none-embed-gcov-dump' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcov-dump'
-File 'riscv-none-embed-gcov-tool' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gcov-tool'
-File 'riscv-none-embed-gdb' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gdb'
-File 'riscv-none-embed-gprof' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-gprof'
-File 'riscv-none-embed-ld' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-ld'
-File 'riscv-none-embed-ld.bfd' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-ld.bfd'
-File 'riscv-none-embed-nm' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-nm'
-File 'riscv-none-embed-objcopy' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-objcopy'
-File 'riscv-none-embed-objdump' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-objdump'
-File 'riscv-none-embed-ranlib' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-ranlib'
-File 'riscv-none-embed-readelf' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-readelf'
-File 'riscv-none-embed-run' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-run'
-File 'riscv-none-embed-size' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-size'
-File 'riscv-none-embed-strings' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-strings'
-File 'riscv-none-embed-strip' linked to 'gnu-mcu-eclipse-riscv-none-gcc/.content/bin/riscv-none-embed-strip'
-Folder 'gnu-mcu-eclipse-openocd' linked to '@gnu-mcu-eclipse/openocd/0.10.0-7.1'.
-File 'openocd' linked to 'gnu-mcu-eclipse-openocd/.content/bin/openocd'
-Folder 'gnu-mcu-eclipse-windows-build-tools' linked to '@gnu-mcu-eclipse/windows-build-tools/2.10.1'.
-
-'xpm install' completed in 6.086 sec.
+hifive1-blinky-cpp...
++ @micro-os-plus/diag-trace@1.0.7
++ @sifive/hifive1-board@1.0.4
++ @sifive/devices@1.0.3
++ @micro-os-plus/riscv-arch@1.0.3
++ @micro-os-plus/startup@1.0.8
++ @micro-os-plus/diag-trace@1.0.7
++ @micro-os-plus/cpp-libs@1.0.4
++ @micro-os-plus/c-libs@1.0.6
++ xmake@0.3.10 => 'node_modules/xmake'
++ @xpack-dev-tools/openocd@0.10.0-14.3
++ @xpack-dev-tools/riscv-none-embed-gcc@8.3.0-1.2.1
++ @xpack-dev-tools/windows-build-tools@2.12.2-2
+'xpacks/micro-os-plus-diag-trace' -> '/Users/ilg/Library/xPacks/@micro-os-plus/diag-trace/1.0.7'
+'xpacks/sifive-devices' -> '/Users/ilg/Library/xPacks/@sifive/devices/1.0.3'
+'xpacks/micro-os-plus-startup' -> '/Users/ilg/Library/xPacks/@micro-os-plus/startup/1.0.8'
+'xpacks/micro-os-plus-riscv-arch' -> '/Users/ilg/Library/xPacks/@micro-os-plus/riscv-arch/1.0.3'
+'xpacks/sifive-hifive1-board' -> '/Users/ilg/Library/xPacks/@sifive/hifive1-board/1.0.4'
+'xpacks/xpack-dev-tools-openocd' -> '/Users/ilg/Library/xPacks/@xpack-dev-tools/openocd/0.10.0-14.3'
+'xpacks/micro-os-plus-cpp-libs' -> '/Users/ilg/Library/xPacks/@micro-os-plus/cpp-libs/1.0.4'
+'xpacks/micro-os-plus-c-libs' -> '/Users/ilg/Library/xPacks/@micro-os-plus/c-libs/1.0.6'
+'xpacks/xpack-dev-tools-riscv-none-embed-gcc' -> '/Users/ilg/Library/xPacks/@xpack-dev-tools/riscv-none-embed-gcc/8.3.0-1.2.1'
+'xpacks/xpack-dev-tools-windows-build-tools' -> '/Users/ilg/Library/xPacks/@xpack-dev-tools/windows-build-tools/2.12.2-2'
+'xpacks/.bin/openocd' -> '../xpack-dev-tools-openocd/.content/bin/openocd'
+'xpacks/.bin/riscv-none-embed-addr2line' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-addr2line'
+'xpacks/.bin/riscv-none-embed-ar' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-ar'
+'xpacks/.bin/riscv-none-embed-as' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-as'
+'xpacks/.bin/riscv-none-embed-c++' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-c++'
+'xpacks/.bin/riscv-none-embed-c++filt' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-c++filt'
+'xpacks/.bin/riscv-none-embed-cpp' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-cpp'
+'xpacks/.bin/riscv-none-embed-elfedit' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-elfedit'
+'xpacks/.bin/riscv-none-embed-g++' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-g++'
+'xpacks/.bin/riscv-none-embed-gcc' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcc'
+'xpacks/.bin/riscv-none-embed-gcc-ar' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcc-ar'
+'xpacks/.bin/riscv-none-embed-gcc-nm' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcc-nm'
+'xpacks/.bin/riscv-none-embed-gcc-ranlib' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcc-ranlib'
+'xpacks/.bin/riscv-none-embed-gcov' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcov'
+'xpacks/.bin/riscv-none-embed-gcov-dump' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcov-dump'
+'xpacks/.bin/riscv-none-embed-gcov-tool' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gcov-tool'
+'xpacks/.bin/riscv-none-embed-gdb' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gdb'
+'xpacks/.bin/riscv-none-embed-gdb-add-index' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gdb-add-index'
+'xpacks/.bin/riscv-none-embed-gprof' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-gprof'
+'xpacks/.bin/riscv-none-embed-ld' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-ld'
+'xpacks/.bin/riscv-none-embed-ld.bfd' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-ld.bfd'
+'xpacks/.bin/riscv-none-embed-nm' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-nm'
+'xpacks/.bin/riscv-none-embed-objcopy' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-objcopy'
+'xpacks/.bin/riscv-none-embed-objdump' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-objdump'
+'xpacks/.bin/riscv-none-embed-ranlib' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-ranlib'
+'xpacks/.bin/riscv-none-embed-readelf' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-readelf'
+'xpacks/.bin/riscv-none-embed-size' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-size'
+'xpacks/.bin/riscv-none-embed-strings' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-strings'
+'xpacks/.bin/riscv-none-embed-strip' -> '../xpack-dev-tools-riscv-none-embed-gcc/.content/bin/riscv-none-embed-strip'
 $
 ```
 
@@ -207,7 +208,7 @@ their locations are automatically added to the internal path, so
 none of the tools need to be in the global path.
 
 ```console
-$ cd /tmp/hifive1-blinky-cpp
+$ cd ~/tmp/hifive1-blinky-cpp
 $ xpm run build
 ```
 

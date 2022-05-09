@@ -89,11 +89,10 @@ The version is visible at:
 The first test is via `xpm init`
 
 ```sh
-mkdir -p ~/tmp/test-hello
-cd ~/tmp/test-hello
-xpm init --template @sifive/templates@next --property language=cpp
+mkdir -p ~/tmp/test-sifive && cd ~/tmp/test-sifive
+xpm init --template @sifive/templates@next --property boardName=hifive1
 xpm install
-xpm run test
+xpm run build
 ```
 
 The project also includes unit tests, which create multiple projects,
@@ -102,7 +101,7 @@ with combinations of properties.
 To run them, use:
 
 ```sh
-cd hello-world-template-xpack.git
+cd sifive-templates-xpack.git
 xpm install
 xpm run test
 ```
@@ -110,7 +109,7 @@ xpm run test
 ## Continuous Integration
 
 All available tests are also performed on GitHub Actions, as the
-[CI on Push](https://github.com/sifive/templates-xpack/actions?query=workflow%3A%22CI+on+Push%22)
+[CI on Push](https://github.com/micro-os-plus/sifive-templates-xpack/actions/workflows/CI.yml)
 workflow.
 
 ## Update the repo
@@ -128,4 +127,4 @@ When the release is considered stable, promote it as `latest`:
 
 - `npm dist-tag ls @sifive/templates`
 - `npm dist-tag add @sifive/templates@1.2.10 latest`
-- `npm dist-tag ls @@sifive/templates`
+- `npm dist-tag ls @sifive/templates`
