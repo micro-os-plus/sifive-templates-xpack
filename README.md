@@ -1,11 +1,9 @@
 [![npm (scoped)](https://img.shields.io/npm/v/@sifive/templates.svg)](https://www.npmjs.com/package/@sifive/templates)
+[![GitHub tag (latest by date)](https://img.shields.io/github/v/tag/sifive/templates-xpack)](https://github.com/sifive/templates-xpack)
 [![license](https://img.shields.io/github/license/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/blob/xpack/LICENSE)
-[![Standard](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com/)
-[![Travis](https://img.shields.io/travis/micro-os-plus/sifive-templates-xpack.svg?label=linux)](https://travis-ci.org/micro-os-plus/sifive-templates-xpack)
-[![GitHub issues](https://img.shields.io/github/issues/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/issues)
-[![GitHub pulls](https://img.shields.io/github/issues-pr/micro-os-plus/sifive-templates-xpack.svg)](https://github.com/micro-os-plus/sifive-templates-xpack/pulls)
+[![CI on Push](https://github.com/sifive/templates-xpack/actions/workflows/CI.yml/badge.svg)](https://github.com/sifive/templates-xpack/actions/workflows/CI.yml)
 
-## Templates to generate SiFive Core Complex projects
+## A source xPack with a template to generate SiFive Core Complex projects
 
 These are the Liquid templates used to generate the projects for the
 **SiFive Core Complex** devices/boards, like **HiFive1**, **Arty E31/E51**.
@@ -35,10 +33,9 @@ follow the instructions from the
 Instantiating the template can be done via the `xpm init` command,
 pointing to this xPack:
 
-```console
-$ mkdir -p my-project
-$ cd my-project
-$ xpm init --template @sifive/templates
+```sh
+mkdir -p my-project && cd my-project
+xpm init --template @sifive/templates
 ```
 
 This command must be invoked in an empty folder, where the project
@@ -51,8 +48,7 @@ interactive mode and the user can manually enter each choice.
 
 ```console
 $ rm -rf /tmp/hifive1-blinky-cpp
-$ mkdir -p /tmp/hifive1-blinky-cpp
-$ cd /tmp/hifive1-blinky-cpp
+$ mkdir -p /tmp/hifive1-blinky-cpp && cd /tmp/hifive1-blinky-cpp
 $ xpm init --template @sifive/templates
 xPack manager - create an xPack, empty or from a template
 
